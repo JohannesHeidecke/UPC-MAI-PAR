@@ -1,22 +1,28 @@
 package planner;
 
+import java.util.Stack;
+
 import model.STRIPElement;
 
 public class LinearPlannerStack {
 	
+	Stack<STRIPElement> stack;
+	
+	public LinearPlannerStack() {
+		this.stack = new Stack<>();
+	}
+	
 	
 	public void push(STRIPElement el) {
-		//TODO implement
+		this.stack.push(el);
 	}
 
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		return this.stack.isEmpty();
 	}
 
 	public STRIPElement pop() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.stack.pop();
 	}
 	
 }

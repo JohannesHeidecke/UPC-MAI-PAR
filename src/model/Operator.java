@@ -5,13 +5,22 @@ import java.util.Set;
 public class Operator extends STRIPElement {
 	
 	private ConjunctivePredicate preconditions;
-	private Set<Predicate> add;
-	private Set<Predicate> delete;
+	private ConjunctivePredicate add;
+	private ConjunctivePredicate delete;
 	
 	
 	public ConjunctivePredicate getPreconditions() {
-		// TODO Auto-generated method stub
-		return preconditions;
+		return this.preconditions;
 	}
+	
+	public ConjunctivePredicate getAdd() {
+		return this.add;
+	}
+
+	public ConjunctivePredicate getDel() {
+		return this.delete;
+	}
+	
+
 
 }
