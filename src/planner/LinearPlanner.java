@@ -43,6 +43,7 @@ public class LinearPlanner {
 		}
 
 		while (!stack.isEmpty()) {
+			System.out.println("-----");
 			// Look at element on top of stack:
 			STRIPElement currentElement = stack.pop();
 
@@ -78,6 +79,7 @@ public class LinearPlanner {
 						// Push a list of preconditions of the operator:
 						stack.push(preconditions);
 						// Push each single precondition:
+						// TODO: heuristic ordering
 						for (SinglePredicate preconPart : preconditions.getSinglePredicates()) {
 							stack.push(preconPart);
 						}
@@ -93,9 +95,8 @@ public class LinearPlanner {
 					stack.push(currentElement);
 				}
 			}
-			System.out.println("---");
 		}
-
+		System.out.println("-----");
 		return plan;
 
 	}

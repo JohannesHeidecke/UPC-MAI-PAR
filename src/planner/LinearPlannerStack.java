@@ -24,7 +24,7 @@ public class LinearPlannerStack {
 
 	public STRIPElement pop() {
 		STRIPElement currentElement = this.stack.pop();
-		System.out.println("POP: \t" +currentElement.toString());
+		System.out.println(" POP: \t" +currentElement.toString());
 		return currentElement;
 	}
 	
