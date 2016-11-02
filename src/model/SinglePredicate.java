@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SinglePredicate extends Predicate {
@@ -60,5 +61,11 @@ public class SinglePredicate extends Predicate {
 
 		return true;
 	}
+	
+	public Variable getArgument(int index) {
+		return this.arguments.get(index);
+	}
+	
+
 
 }

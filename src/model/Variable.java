@@ -2,10 +2,7 @@ package model;
 
 public class Variable {
 
-	Object value;
-
-	public Variable() {
-	}
+	protected Object value;
 
 	public Variable(Object value) {
 		this.value = value;
@@ -17,6 +14,10 @@ public class Variable {
 
 	public void instantiate(Object value) {
 		this.value = value;
+	}
+	
+	public Object getValue() {
+		return this.value;
 	}
 
 	@Override

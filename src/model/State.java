@@ -5,7 +5,7 @@ import java.util.List;
 
 public class State {
 
-	private ConjunctivePredicate predicates;
+	protected ConjunctivePredicate predicates;
 
 	public ConjunctivePredicate getPredicates() {
 		return this.predicates;
@@ -19,12 +19,11 @@ public class State {
 
 		// Remove all predicates from operator's delete list:
 		for (SinglePredicate delPred : operator.getDel().getSinglePredicates()) {
-
+			this.predicates.remove(delPred);
 		}
 	}
 
-	public List<SinglePredicate> getFalseSinglePredicates(
-			ConjunctivePredicate conjPred) {
+	public List<SinglePredicate> getFalseSinglePredicates(ConjunctivePredicate conjPred) {
 		// returns all predicates from conjPred, that are not true in this
 		// state:
 		List<SinglePredicate> falsePredicates = new ArrayList<SinglePredicate>();

@@ -17,10 +17,10 @@ public class LinearPlanner {
 	private State initialState, finalState, currentState;
 	private LinearPlannerStack stack;
 
-	public LinearPlanner(State initialState, State finalState,
-			List<Operator> operators) {
+	public LinearPlanner(State initialState, State finalState, List<Operator> operators) {
 
 		this.initialState = initialState;
+		this.currentState = initialState;
 		this.finalState = finalState;
 		this.operators = operators;
 
@@ -38,8 +38,7 @@ public class LinearPlanner {
 		// Push goal predicates from final state as list:
 		stack.push(finalState.getPredicates());
 		// Push individual goal predicates:
-		for (SinglePredicate singlePred : finalState.getPredicates()
-				.getSinglePredicates()) {
+		for (SinglePredicate singlePred : finalState.getPredicates().getSinglePredicates()) {
 			stack.push(singlePred);
 		}
 
@@ -61,8 +60,7 @@ public class LinearPlanner {
 				// TODO: add heuristic ordering
 				// Push all predicates from list that are not true in current
 				// state to the stack:
-				for (SinglePredicate falsePred : currentState
-						.getFalseSinglePredicates(conjPred)) {
+				for (SinglePredicate falsePred : currentState.getFalseSinglePredicates(conjPred)) {
 					stack.push(falsePred);
 				}
 			} else if (currentElement instanceof SinglePredicate) {
@@ -76,13 +74,11 @@ public class LinearPlanner {
 						Operator operator = findOperatorToResolve(singlePred);
 						// Push the operator
 						stack.push(operator);
-						ConjunctivePredicate preconditions = operator
-								.getPreconditions();
+						ConjunctivePredicate preconditions = operator.getPreconditions();
 						// Push a list of preconditions of the operator:
 						stack.push(preconditions);
 						// Push each single precondition:
-						for (SinglePredicate preconPart : preconditions
-								.getSinglePredicates()) {
+						for (SinglePredicate preconPart : preconditions.getSinglePredicates()) {
 							stack.push(preconPart);
 						}
 						// if single predicate and true in current state: do
@@ -105,25 +101,42 @@ public class LinearPlanner {
 	}
 
 	private void instantiate(SinglePredicate singlePred) {
-		// TODO Auto-generated method stub
+
+		for (SinglePredicate currPred : this.currentState.getPredicates().getSinglePredicates()) {
+			// find a compatible predicate in current state:
+			if(currPred.isCompatibleTo(singlePred)) {
+				// instantiate with constants in predicate found in current state:
+				for (int i = 0; i < currPred.getValence() ; i++) {
+					if (!singlePred.getArgument(i).isInstantiated()) {
+						System.out.println("instantiate with "+currPred.getArgument(i).getValue());
+						singlePred.getArgument(i).instantiate(currPred.getArgument(i).getValue());
+					}
+				}
+			}
+		}
 
 	}
 
-	private Operator findOperatorToResolve(SinglePredicate predToResolve)
-			throws Exception {
+	private Operator findOperatorToResolve(SinglePredicate predToResolve) throws Exception {
 		// Finds an operator that has a compatible precondition in its add-list
 		// to resolve predToResolve:
 		for (Operator op : this.operators) {
-			for (SinglePredicate predCandidate : op.getAdd()
-					.getSinglePredicates()) {
+			Operator opCopy = op.getClass().newInstance();
+			for (SinglePredicate predCandidate : opCopy.getAdd().getSinglePredicates()) {
 				if (predCandidate.isCompatibleTo(predToResolve)) {
-					return op;
+					//instantiate opCopy with predToResolve
+					for(int i = 0; i< predToResolve.getValence(); i++) {
+						if(!predCandidate.getArgument(i).isInstantiated()) {
+							System.out.println("instantiate with "+predToResolve.getArgument(i).getValue());
+							predCandidate.getArgument(i).instantiate(predToResolve.getArgument(i).getValue());
+						}
+					}
+					return opCopy;
 				}
 
 			}
 		}
-		throw new Exception(
-				"There was no operator found to resolve a predicate. There is no possible plan.");
+		throw new Exception("There was no operator found to resolve a predicate. There is no possible plan.");
 	}
 
 }

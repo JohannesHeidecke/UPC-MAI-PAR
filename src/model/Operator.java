@@ -4,9 +4,9 @@ import java.util.Set;
 
 public class Operator extends STRIPElement {
 	
-	private ConjunctivePredicate preconditions;
-	private ConjunctivePredicate add;
-	private ConjunctivePredicate delete;
+	protected ConjunctivePredicate preconditions;
+	protected ConjunctivePredicate add;
+	protected ConjunctivePredicate delete;
 	
 	
 	public ConjunctivePredicate getPreconditions() {
@@ -21,6 +21,5 @@ public class Operator extends STRIPElement {
 		return this.delete;
 	}
 	
-
 
 }

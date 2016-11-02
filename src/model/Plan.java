@@ -17,6 +17,18 @@ public class Plan {
 		
 	}
 	
+	@Override
+	public String toString() {
+		String result = "PLAN:\n";
+		
+		for (Operator op : operators) {
+			result += "\t"+op.toString();
+		}
+		
+		return result;
+		
+	}
+	
 	
 
 }

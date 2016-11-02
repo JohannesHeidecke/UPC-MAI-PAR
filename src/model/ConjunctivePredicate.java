@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -7,6 +8,10 @@ public class ConjunctivePredicate extends Predicate {
 
 	// The predicates that are part of the conjunction:
 	private List<SinglePredicate> predicates;
+	
+	public ConjunctivePredicate() {
+		predicates = new ArrayList<>();
+	}
 
 	public List<SinglePredicate> getSinglePredicates() {
 		return this.predicates;
