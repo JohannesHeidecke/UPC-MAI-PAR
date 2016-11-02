@@ -20,10 +20,10 @@ public class InitialState extends State {
 		SinglePredicate robotLocation = new ProbotLocation(new Location(new Coordinate(1, 1)));
 		SinglePredicate robotFree = new ProbotFree();
 		SinglePredicate machine1 = new Pmachine(new Location(new Coordinate(2, 3)), 
-				new PositiveInteger(2));
+				new PositiveInteger(new Integer(2)));
 		SinglePredicate petition1 = new Ppetition(new Location(new Coordinate(4, 1)), 
-				new PositiveInteger(2));
-		SinglePredicate steps = new Psteps(new PositiveInteger(0));
+				new PositiveInteger(new Integer(2)));
+		SinglePredicate steps = new Psteps(new PositiveInteger(new Integer(0)));
 		
 		predicates.add(robotLocation);
 		predicates.add(robotFree);

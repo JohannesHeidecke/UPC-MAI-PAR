@@ -3,6 +3,7 @@ package problem.coffee.pred.args;
 import model.Variable;
 
 public class Location extends Variable {
+	
 
 	public Location(Coordinate value) {
 		super(value);
@@ -26,10 +27,23 @@ public class Location extends Variable {
 		return false;
 	}
 	
+	public int getX() {
+		return ((Coordinate) this.value).getX();
+	}
+	
+	public int getY() {
+		return ((Coordinate) this.value).getY();
+	}
+	
 	@Override 
 	public String toString() {
-		Coordinate c = (Coordinate) this.value;
-		return "["+c.getX()+","+c.getY()+"]";
+		if (this.value != null) {
+			Coordinate c = (Coordinate) this.value;
+			return "["+c.getX()+","+c.getY()+"]";
+		} else {
+			return "_";
+		}
+		
 	}
 
 }

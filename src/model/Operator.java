@@ -20,6 +20,13 @@ public class Operator extends STRIPElement {
 	public ConjunctivePredicate getDel() {
 		return this.delete;
 	}
+
+	public void apply() {
+		// normally: do nothing
+		// TODO: better description
+		// make abstract?
+		
+	}
 	
 
 }

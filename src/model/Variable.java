@@ -22,20 +22,6 @@ public abstract class Variable {
 
 	@Override
 	public abstract boolean equals(Object o);
-	// TODO: remove comment garbage:
-//		// Check if two variables are both uninstantiated or both have the same
-//		// value:
-//		if (o instanceof Variable) {
-//			if (this.value == null || ((Variable) o).value == null) {
-//				return this.value == ((Variable) o).value;
-//			}
-//			if (this.value.equals(((Variable) o).value)) {
-//				return true;
-//			}
-//		}
-//
-//		return false;
-//	}
 	
 
 }

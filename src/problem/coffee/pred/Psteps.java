@@ -10,7 +10,7 @@ import problem.coffee.pred.args.PositiveInteger;
 public class Psteps extends SinglePredicate {
 	
 	public Psteps(PositiveInteger x) {
-		super("machine", new ArrayList<Variable>(Arrays.asList(x)));
+		super("steps", new ArrayList<Variable>(Arrays.asList(x)));
 	}
 
 }

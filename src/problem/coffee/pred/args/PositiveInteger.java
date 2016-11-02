@@ -8,6 +8,10 @@ public class PositiveInteger extends Variable {
 		//TODO: check if positive
 		super(value);
 	}
+	
+	public int getIntValue() {
+		return (Integer) this.getValue();
+	}
 
 	@Override
 	public boolean equals(Object o) {
@@ -22,7 +26,12 @@ public class PositiveInteger extends Variable {
 	
 	@Override
 	public String toString() {
-		return this.value.toString();
+		if (this.value != null) {
+			return this.value.toString();
+		} else {
+			return "_";
+		}
+		
 	}
 
 }

@@ -33,5 +33,16 @@ public class ConjunctivePredicate extends Predicate {
 			}
 		}
 	}
+	
+	@Override
+	public String toString() {
+		String result = "[";
+		if (this.predicates != null) {
+			for (SinglePredicate pred : this.predicates) {
+				result += pred.toString()+", ";
+			}
+		}
+		return result+"]";
+	}
 
 }

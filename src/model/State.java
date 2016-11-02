@@ -12,6 +12,9 @@ public class State {
 	}
 
 	public void applyOperator(Operator operator) {
+		
+		operator.apply();
+		
 		// Add all predicates from operator's add list:
 		for (SinglePredicate addPred : operator.getAdd().getSinglePredicates()) {
 			this.predicates.add(addPred);

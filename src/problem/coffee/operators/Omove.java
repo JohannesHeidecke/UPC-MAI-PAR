@@ -12,13 +12,14 @@ public class Omove extends Operator {
 	
 	private Location o1;
 	private Location o2;
-	private PositiveInteger x;
+	private PositiveInteger x, xNew;
 	
 	public Omove() {
 		
 		o1 = new Location(null);
 		o2 = new Location(null);
 		x = new PositiveInteger(null);
+		xNew = new PositiveInteger(null);
 		
 		ConjunctivePredicate preconditions = new ConjunctivePredicate();
 		SinglePredicate robotLocation = new ProbotLocation(o1);
@@ -30,7 +31,7 @@ public class Omove extends Operator {
 		ConjunctivePredicate add = new ConjunctivePredicate();
 		SinglePredicate robotLocationNew = new ProbotLocation(o2);
 		add.add(robotLocationNew);
-		SinglePredicate stepsNew = new Psteps(calculateSteps(x, o1, o2));
+		SinglePredicate stepsNew = new Psteps(xNew);
 		add.add(stepsNew);
 		this.add = add;
 		
@@ -41,14 +42,21 @@ public class Omove extends Operator {
 		
 	}
 	
-	private static PositiveInteger calculateSteps(PositiveInteger x, Location o1, Location o2) {
+	@Override
+	public void apply() {
+		xNew.instantiate(calculateSteps(x, o1, o2));
+	}
+	
+	private static Integer calculateSteps(PositiveInteger x, Location o1, Location o2) {
 		// TODO: implement: x + distance between o1 and o2
-		return new PositiveInteger(new Integer(42));
+		int distance = Math.abs(o1.getX() - o2.getX()) + Math.abs(o1.getY() - o2.getY());
+		int totalSteps = x.getIntValue() + distance;
+		return new Integer(totalSteps);
 	}
 	
 	@Override
 	public String toString() {
-		return "Move from "+o1.toString()+" to "+o2.toString();
+		return "Move from "+o1.toString()+" to "+o2.toString()+". Total steps: "+xNew.toString();
 	}
 	
 	

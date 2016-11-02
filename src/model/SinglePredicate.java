@@ -61,11 +61,21 @@ public class SinglePredicate extends Predicate {
 
 		return true;
 	}
-	
+
 	public Variable getArgument(int index) {
 		return this.arguments.get(index);
 	}
-	
 
+	@Override
+	public String toString() {
+		String result = this.identifier + "(";
+		if (arguments != null) {
+			for(Variable arg : arguments) {
+				result += arg.toString()+", ";
+			}
+		}
+		result += ")";
+		return result;
+	}
 
 }
