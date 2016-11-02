@@ -46,6 +46,11 @@ public class Omove extends Operator {
 		return new PositiveInteger(new Integer(42));
 	}
 	
+	@Override
+	public String toString() {
+		return "Move from "+o1.toString()+" to "+o2.toString();
+	}
+	
 	
 
 }

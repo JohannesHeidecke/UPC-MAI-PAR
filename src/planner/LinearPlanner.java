@@ -104,14 +104,15 @@ public class LinearPlanner {
 
 		for (SinglePredicate currPred : this.currentState.getPredicates().getSinglePredicates()) {
 			// find a compatible predicate in current state:
-			if(currPred.isCompatibleTo(singlePred)) {
-				// instantiate with constants in predicate found in current state:
-				for (int i = 0; i < currPred.getValence() ; i++) {
+			if (currPred.isCompatibleTo(singlePred)) {
+				// instantiate with constants in predicate found in current
+				// state:
+				for (int i = 0; i < currPred.getValence(); i++) {
 					if (!singlePred.getArgument(i).isInstantiated()) {
-						System.out.println("instantiate with "+currPred.getArgument(i).getValue());
 						singlePred.getArgument(i).instantiate(currPred.getArgument(i).getValue());
 					}
 				}
+				return;
 			}
 		}
 
@@ -124,10 +125,9 @@ public class LinearPlanner {
 			Operator opCopy = op.getClass().newInstance();
 			for (SinglePredicate predCandidate : opCopy.getAdd().getSinglePredicates()) {
 				if (predCandidate.isCompatibleTo(predToResolve)) {
-					//instantiate opCopy with predToResolve
-					for(int i = 0; i< predToResolve.getValence(); i++) {
-						if(!predCandidate.getArgument(i).isInstantiated()) {
-							System.out.println("instantiate with "+predToResolve.getArgument(i).getValue());
+					// instantiate opCopy with predToResolve
+					for (int i = 0; i < predToResolve.getValence(); i++) {
+						if (!predCandidate.getArgument(i).isInstantiated()) {
 							predCandidate.getArgument(i).instantiate(predToResolve.getArgument(i).getValue());
 						}
 					}

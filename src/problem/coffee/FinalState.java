@@ -19,7 +19,7 @@ public class FinalState extends State {
 		ConjunctivePredicate predicates = new ConjunctivePredicate();
 
 		SinglePredicate served1 = new Pserved(new Location(new Coordinate(4, 1)));
-		
+		predicates.add(served1);
 		
 		this.predicates = predicates;
 	}

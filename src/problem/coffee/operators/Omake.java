@@ -37,8 +37,12 @@ public class Omake extends Operator {
 		ConjunctivePredicate delete = new ConjunctivePredicate();
 		delete.add(robotFree);
 		this.delete = delete;
-		
-		
+	
+	}
+	
+	@Override
+	public String toString() {
+		return "Make "+n.toString()+" cups at office "+o.toString();
 	}
 
 }

@@ -43,5 +43,10 @@ public class OServe extends Operator {
 		
 		
 	}
+	
+	@Override
+	public String toString() {
+		return "Serve "+n.toString()+" cups at office "+o.toString();
+	}
 
 }

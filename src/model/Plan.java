@@ -22,7 +22,7 @@ public class Plan {
 		String result = "PLAN:\n";
 		
 		for (Operator op : operators) {
-			result += "\t"+op.toString();
+			result += "\t"+op.toString()+"\n";
 		}
 		
 		return result;

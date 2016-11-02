@@ -1,6 +1,6 @@
 package model;
 
-public class Variable {
+public abstract class Variable {
 
 	protected Object value;
 
@@ -21,19 +21,21 @@ public class Variable {
 	}
 
 	@Override
-	public boolean equals(Object o) {
-		// Check if two variables are both uninstantiated or both have the same
-		// value:
-		if (o instanceof Variable) {
-			if (this.value == null || ((Variable) o).value == null) {
-				return this.value == ((Variable) o).value;
-			}
-			if (this.value.equals(((Variable) o).value)) {
-				return true;
-			}
-		}
-
-		return false;
-	}
+	public abstract boolean equals(Object o);
+	// TODO: remove comment garbage:
+//		// Check if two variables are both uninstantiated or both have the same
+//		// value:
+//		if (o instanceof Variable) {
+//			if (this.value == null || ((Variable) o).value == null) {
+//				return this.value == ((Variable) o).value;
+//			}
+//			if (this.value.equals(((Variable) o).value)) {
+//				return true;
+//			}
+//		}
+//
+//		return false;
+//	}
+	
 
 }

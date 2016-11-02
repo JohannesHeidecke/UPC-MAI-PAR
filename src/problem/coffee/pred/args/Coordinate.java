@@ -26,5 +26,17 @@ public class Coordinate {
 		this.y = y;
 	}
 	
+	@Override 
+	public boolean equals (Object o) {
+		if (o instanceof Coordinate) {
+			Coordinate c = (Coordinate) o;
+			if (this.x == c.x && this.y ==  c.y) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
 	
 }
