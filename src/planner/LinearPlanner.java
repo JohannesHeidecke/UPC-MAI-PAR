@@ -93,7 +93,7 @@ public class LinearPlanner {
 					stack.push(currentElement);
 				}
 			}
-
+			System.out.println("---");
 		}
 
 		return plan;
