@@ -15,6 +15,7 @@ public class LinearPlannerStack {
 	
 	public void push(STRIPElement el) {
 		this.stack.push(el);
+		System.out.println("PUSH: \t" +el.toString());
 	}
 
 	public boolean isEmpty() {
@@ -22,7 +23,9 @@ public class LinearPlannerStack {
 	}
 
 	public STRIPElement pop() {
-		return this.stack.pop();
+		STRIPElement currentElement = this.stack.pop();
+		System.out.println("POP: \t" +currentElement.toString());
+		return currentElement;
 	}
 	
 }

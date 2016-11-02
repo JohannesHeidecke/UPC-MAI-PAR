@@ -73,6 +73,8 @@ public class SinglePredicate extends Predicate {
 			for(Variable arg : arguments) {
 				result += arg.toString()+", ";
 			}
+			// delete ", " in the end:
+			result = result.substring(0, result.length()-2);
 		}
 		result += ")";
 		return result;

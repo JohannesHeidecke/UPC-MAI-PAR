@@ -45,7 +45,6 @@ public class LinearPlanner {
 		while (!stack.isEmpty()) {
 			// Look at element on top of stack:
 			STRIPElement currentElement = stack.pop();
-			System.out.println("Stack pop: \t" +currentElement.toString());
 
 			if (currentElement instanceof Operator) {
 				// If element is an operator:

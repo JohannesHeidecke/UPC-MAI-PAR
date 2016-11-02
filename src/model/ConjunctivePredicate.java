@@ -8,7 +8,7 @@ public class ConjunctivePredicate extends Predicate {
 
 	// The predicates that are part of the conjunction:
 	private List<SinglePredicate> predicates;
-	
+
 	public ConjunctivePredicate() {
 		predicates = new ArrayList<>();
 	}
@@ -24,8 +24,7 @@ public class ConjunctivePredicate extends Predicate {
 	public void remove(SinglePredicate singlePred) {
 		// Remove first occurrence of a SinglePredicate that is compatible to
 		// singlePred from conjunction:
-		for (Iterator<SinglePredicate> iterator = predicates.iterator(); iterator
-				.hasNext();) {
+		for (Iterator<SinglePredicate> iterator = predicates.iterator(); iterator.hasNext();) {
 			SinglePredicate nextPred = iterator.next();
 			if (nextPred.isCompatibleTo(singlePred)) {
 				iterator.remove();
@@ -33,16 +32,18 @@ public class ConjunctivePredicate extends Predicate {
 			}
 		}
 	}
-	
+
 	@Override
 	public String toString() {
-		String result = "[";
+		String result = "{";
 		if (this.predicates != null) {
 			for (SinglePredicate pred : this.predicates) {
-				result += pred.toString()+", ";
+				result += pred.toString() + ", ";
 			}
+			// delete ", " in the end:
+			result = result.substring(0, result.length() - 2);
 		}
-		return result+"]";
+		return result + "}";
 	}
 
 }
