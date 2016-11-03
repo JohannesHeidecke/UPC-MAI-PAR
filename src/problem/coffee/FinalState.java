@@ -16,6 +16,8 @@ import problem.coffee.pred.args.PositiveInteger;
 public class FinalState extends State {
 
 	public FinalState() {
+		super(null);
+		
 		ConjunctivePredicate predicates = new ConjunctivePredicate();
 
 		SinglePredicate served1 = new Pserved(new Location(new Coordinate(1, 3)));
@@ -28,7 +30,7 @@ public class FinalState extends State {
 		predicates.add(served4);
 		SinglePredicate served5 = new Pserved(new Location(new Coordinate(5, 1)));
 		predicates.add(served5);
-		
+
 		this.predicates = predicates;
 	}
 

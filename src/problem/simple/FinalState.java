@@ -11,6 +11,7 @@ public class FinalState extends State {
 	
 	
 	public FinalState() {
+		super(null);
 		ConjunctivePredicate predicates = new ConjunctivePredicate();
 		
 		SinglePredicate isAt = new PisAt(new Location("Barcelona"));
