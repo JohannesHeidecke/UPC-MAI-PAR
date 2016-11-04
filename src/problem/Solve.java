@@ -30,7 +30,6 @@ public class Solve {
 		try {
 			plan = planner.calculatePlan();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		System.out.println(plan);

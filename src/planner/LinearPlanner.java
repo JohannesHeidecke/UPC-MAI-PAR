@@ -102,6 +102,8 @@ public class LinearPlanner {
 	}
 
 	private void instantiate(SinglePredicate singlePred) {
+		
+		//TODO: heuristic choice if more than one possible instantiation.
 
 		for (SinglePredicate currPred : this.currentState.getPredicates().getSinglePredicates()) {
 			// find a compatible predicate in current state:

@@ -48,7 +48,6 @@ public class Omove extends Operator {
 	}
 	
 	private static Integer calculateSteps(PositiveInteger x, Location o1, Location o2) {
-		// TODO: implement: x + distance between o1 and o2
 		int distance = Math.abs(o1.getX() - o2.getX()) + Math.abs(o1.getY() - o2.getY());
 		int totalSteps = x.getIntValue() + distance;
 		return new Integer(totalSteps);

@@ -1,7 +1,6 @@
 package problem.simple;
 
 import model.ConjunctivePredicate;
-import model.Predicate;
 import model.SinglePredicate;
 import model.State;
 import problem.simple.pred.PisAt;
