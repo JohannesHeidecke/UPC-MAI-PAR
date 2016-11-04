@@ -14,6 +14,7 @@ public class Plan {
 	public void addOperator(Operator operator) {
 		
 		this.operators.add(operator);
+		System.out.println("PLAN:\t"+operator.toString());
 		
 	}
 	
