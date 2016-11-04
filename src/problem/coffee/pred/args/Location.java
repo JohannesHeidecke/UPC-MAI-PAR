@@ -7,7 +7,6 @@ public class Location extends Variable {
 
 	public Location(Coordinate value) {
 		super(value);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -44,6 +43,10 @@ public class Location extends Variable {
 			return "_";
 		}
 		
+	}
+	
+	public int distanceTo(Location lo) {
+		return Math.abs(this.getX()-lo.getX()) + Math.abs(this.getY()-lo.getY());
 	}
 
 }

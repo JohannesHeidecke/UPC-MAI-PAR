@@ -1,7 +1,7 @@
 package problem.coffee;
 
 import model.ConjunctivePredicate;
-import model.SinglePredicate;
+import model.Predicate;
 import model.State;
 import problem.coffee.pred.Pmachine;
 import problem.coffee.pred.Ppetition;
@@ -20,30 +20,30 @@ public class InitialState extends State {
 		
 		ConjunctivePredicate predicates = new ConjunctivePredicate();
 
-		SinglePredicate robotLocation = new ProbotLocation(new Location(new Coordinate(1, 1)));
-		SinglePredicate robotFree = new ProbotFree();
-		SinglePredicate machine1 = new Pmachine(new Location(new Coordinate(1, 4)), 
+		Predicate robotLocation = new ProbotLocation(new Location(new Coordinate(1, 1)));
+		Predicate robotFree = new ProbotFree();
+		Predicate machine1 = new Pmachine(new Location(new Coordinate(1, 4)), 
 				new PositiveInteger(new Integer(3)));
-		SinglePredicate machine2 = new Pmachine(new Location(new Coordinate(2, 2)), 
+		Predicate machine2 = new Pmachine(new Location(new Coordinate(2, 2)), 
 				new PositiveInteger(new Integer(1)));
-		SinglePredicate machine3 = new Pmachine(new Location(new Coordinate(4, 3)), 
+		Predicate machine3 = new Pmachine(new Location(new Coordinate(4, 3)), 
 				new PositiveInteger(new Integer(2)));
-		SinglePredicate machine4 = new Pmachine(new Location(new Coordinate(4, 5)), 
+		Predicate machine4 = new Pmachine(new Location(new Coordinate(4, 5)), 
 				new PositiveInteger(new Integer(1)));
-		SinglePredicate machine5 = new Pmachine(new Location(new Coordinate(6, 1)), 
+		Predicate machine5 = new Pmachine(new Location(new Coordinate(6, 1)), 
 				new PositiveInteger(new Integer(2)));
 		
-		SinglePredicate petition1 = new Ppetition(new Location(new Coordinate(1, 3)), 
+		Predicate petition1 = new Ppetition(new Location(new Coordinate(1, 3)), 
 				new PositiveInteger(new Integer(1)));
-		SinglePredicate petition2 = new Ppetition(new Location(new Coordinate(2, 5)), 
+		Predicate petition2 = new Ppetition(new Location(new Coordinate(2, 5)), 
 				new PositiveInteger(new Integer(3)));
-		SinglePredicate petition3 = new Ppetition(new Location(new Coordinate(2, 6)), 
+		Predicate petition3 = new Ppetition(new Location(new Coordinate(2, 6)), 
 				new PositiveInteger(new Integer(1)));
-		SinglePredicate petition4 = new Ppetition(new Location(new Coordinate(3, 1)), 
+		Predicate petition4 = new Ppetition(new Location(new Coordinate(3, 1)), 
 				new PositiveInteger(new Integer(2)));
-		SinglePredicate petition5 = new Ppetition(new Location(new Coordinate(5, 1)), 
+		Predicate petition5 = new Ppetition(new Location(new Coordinate(5, 1)), 
 				new PositiveInteger(new Integer(2)));
-		SinglePredicate steps = new Psteps(new PositiveInteger(new Integer(0)));
+		Predicate steps = new Psteps(new PositiveInteger(new Integer(0)));
 		
 		
 		predicates.add(robotLocation);

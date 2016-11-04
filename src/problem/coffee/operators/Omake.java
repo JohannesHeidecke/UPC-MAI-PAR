@@ -2,7 +2,7 @@ package problem.coffee.operators;
 
 import model.ConjunctivePredicate;
 import model.Operator;
-import model.SinglePredicate;
+import model.Predicate;
 import problem.coffee.pred.Pmachine;
 import problem.coffee.pred.ProbotFree;
 import problem.coffee.pred.ProbotLoaded;
@@ -21,16 +21,16 @@ public class Omake extends Operator {
 		n = new PositiveInteger(null);
 		
 		ConjunctivePredicate preconditions = new ConjunctivePredicate();
-		SinglePredicate robotLocation = new ProbotLocation(o);
-		preconditions.add(robotLocation);
-		SinglePredicate robotFree = new ProbotFree();
+		Predicate robotFree = new ProbotFree();
 		preconditions.add(robotFree);
-		SinglePredicate machine = new Pmachine(o, n);
+		Predicate robotLocation = new ProbotLocation(o);
+		preconditions.add(robotLocation);
+		Predicate machine = new Pmachine(o, n);
 		preconditions.add(machine);
 		this.preconditions = preconditions;
 		
 		ConjunctivePredicate add = new ConjunctivePredicate();
-		SinglePredicate robLoaded = new ProbotLoaded(n);
+		Predicate robLoaded = new ProbotLoaded(n);
 		add.add(robLoaded);
 		this.add = add;
 		
@@ -44,5 +44,6 @@ public class Omake extends Operator {
 	public String toString() {
 		return "Make "+n.toString()+" cups at office "+o.toString();
 	}
+
 
 }

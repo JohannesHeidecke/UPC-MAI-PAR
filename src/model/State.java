@@ -20,21 +20,21 @@ public class State {
 		operator.apply();
 		
 		// Add all predicates from operator's add list:
-		for (SinglePredicate addPred : operator.getAdd().getSinglePredicates()) {
+		for (Predicate addPred : operator.getAdd().toList()) {
 			this.predicates.add(addPred);
 		}
 
 		// Remove all predicates from operator's delete list:
-		for (SinglePredicate delPred : operator.getDel().getSinglePredicates()) {
+		for (Predicate delPred : operator.getDel().toList()) {
 			this.predicates.remove(delPred);
 		}
 	}
 
-	public List<SinglePredicate> getFalseSinglePredicates(ConjunctivePredicate conjPred) {
+	public List<Predicate> getFalseSinglePredicates(ConjunctivePredicate conjPred) {
 		// returns all predicates from conjPred, that are not true in this
 		// state:
-		List<SinglePredicate> falsePredicates = new ArrayList<SinglePredicate>();
-		for (SinglePredicate testPred : conjPred.getSinglePredicates()) {
+		List<Predicate> falsePredicates = new ArrayList<Predicate>();
+		for (Predicate testPred : conjPred.toList()) {
 			if (!this.isTrue(testPred)) {
 				falsePredicates.add(testPred);
 			}
@@ -42,14 +42,13 @@ public class State {
 		return falsePredicates;
 	}
 
-	public boolean isTrue(SinglePredicate pred) {
+	public boolean isTrue(Predicate pred) {
 		// Check if pred is true in this state:
-		// TODO: replace with exception or delete
 		if (!pred.isFullyInstantiated()) {
-			System.out.println("WARNING!");
+			System.out.println("WARNING! Predicate "+pred.toString()+" is not fully instantiated.");
 		}
 
-		for (SinglePredicate myPred : predicates.getSinglePredicates()) {
+		for (Predicate myPred : predicates.toList()) {
 			if (myPred.isCompatibleTo(pred)) {
 				return true;
 			}

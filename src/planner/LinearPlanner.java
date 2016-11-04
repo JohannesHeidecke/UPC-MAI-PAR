@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.ConjunctivePredicate;
+import model.Heuristic;
 import model.Operator;
 import model.Plan;
 import model.STRIPElement;
-import model.SinglePredicate;
+import model.Predicate;
 import model.State;
 import model.Variable;
 
@@ -17,7 +18,8 @@ public class LinearPlanner {
 	private State initialState, finalState, currentState;
 	private LinearPlannerStack stack;
 
-	public LinearPlanner(State initialState, State finalState, List<Operator> operators) {
+	public LinearPlanner(State initialState, State finalState,
+			List<Operator> operators) {
 
 		this.initialState = initialState;
 		this.currentState = initialState;
@@ -28,7 +30,7 @@ public class LinearPlanner {
 
 	}
 
-	public Plan calculatePlan() throws Exception {
+	public Plan calculatePlan(Heuristic heuristic) throws Exception {
 
 		// Calculate plan according to STRIP algorithm (linear planner with goal
 		// stack):
@@ -38,7 +40,15 @@ public class LinearPlanner {
 		// Push goal predicates from final state as list:
 		stack.push(finalState.getPredicates());
 		// Push individual goal predicates:
-		for (SinglePredicate singlePred : finalState.getPredicates().getSinglePredicates()) {
+
+		// HEURISTIC: order the offices with a traveling salesmen solution
+		// for example: NN algorithm
+		// https://en.wikipedia.org/wiki/Nearest_neighbour_algorithm
+		// start at served(o) with o closest to current position
+		// then go on by choosing the nearest neighbor.
+		List<Predicate> goalPredicates = heuristic.heuristicPushOrder(
+				finalState.getPredicates().toList(), currentState);
+		for (Predicate singlePred : goalPredicates) {
 			stack.push(singlePred);
 		}
 
@@ -58,15 +68,19 @@ public class LinearPlanner {
 			} else if (currentElement instanceof ConjunctivePredicate) {
 				// If element is a list of predicates:
 				ConjunctivePredicate conjPred = (ConjunctivePredicate) currentElement;
-				// TODO: add heuristic ordering
+				// TODO: report: we don't add a heuristic here because in the
+				// coffee
+				// problem this never happens.
+
 				// Push all predicates from list that are not true in current
 				// state to the stack:
-				for (SinglePredicate falsePred : currentState.getFalseSinglePredicates(conjPred)) {
+				for (Predicate falsePred : currentState
+						.getFalseSinglePredicates(conjPred)) {
 					stack.push(falsePred);
 				}
-			} else if (currentElement instanceof SinglePredicate) {
+			} else if (currentElement instanceof Predicate) {
 				// If element is a single predicate:
-				SinglePredicate singlePred = (SinglePredicate) currentElement;
+				Predicate singlePred = (Predicate) currentElement;
 				if (singlePred.isFullyInstantiated()) {
 					// If predicate is fully instantiated:
 					if (!currentState.isTrue(singlePred)) {
@@ -75,12 +89,16 @@ public class LinearPlanner {
 						Operator operator = findOperatorToResolve(singlePred);
 						// Push the operator
 						stack.push(operator);
-						ConjunctivePredicate preconditions = operator.getPreconditions();
+						ConjunctivePredicate preconditions = operator
+								.getPreconditions();
 						// Push a list of preconditions of the operator:
 						stack.push(preconditions);
 						// Push each single precondition:
-						// TODO: heuristic ordering
-						for (SinglePredicate preconPart : preconditions.getSinglePredicates()) {
+						// TODO: report: don't change order here because it
+						// changes the semantics of the operator and can make
+						// the problem unsolvable. The order of preconditions
+						// should not be changed for our three operators.
+						for (Predicate preconPart : preconditions.toList()) {
 							stack.push(preconPart);
 						}
 						// if single predicate and true in current state: do
@@ -90,9 +108,7 @@ public class LinearPlanner {
 					// if single predicate not instantiated:
 					// find constant to instantiate the variables and set this
 					// constant in entire stack:
-					instantiate(singlePred);
-					// TODO: think about, if we actually need the next line:
-					stack.push(currentElement);
+					instantiate(singlePred, heuristic);
 				}
 			}
 		}
@@ -101,37 +117,52 @@ public class LinearPlanner {
 
 	}
 
-	private void instantiate(SinglePredicate singlePred) {
-		
-		//TODO: heuristic choice if more than one possible instantiation.
+	private void instantiate(Predicate singlePred, Heuristic heuristic) {
 
-		for (SinglePredicate currPred : this.currentState.getPredicates().getSinglePredicates()) {
+		// TODO: heuristic choice if more than one possible instantiation.
+		// choose the nearest machine using manhattan distance
+		// second step: remember the next petition and use distance both to
+		// machine and from machine to that petition.
+
+		List<Predicate> compatiblePredicates = new ArrayList<>();
+		for (Predicate currPred : this.currentState.getPredicates().toList()) {
 			// find a compatible predicate in current state:
 			if (currPred.isCompatibleTo(singlePred)) {
-				// instantiate with constants in predicate found in current
-				// state:
-				for (int i = 0; i < currPred.getValence(); i++) {
-					if (!singlePred.getArgument(i).isInstantiated()) {
-						singlePred.getArgument(i).instantiate(currPred.getArgument(i).getValue());
-					}
-				}
-				return;
+				compatiblePredicates.add(currPred);
 			}
 		}
 
+		// Heuristic chooses one candidate from compatiblePredicates
+		Predicate chosenPred = heuristic.choosePredicateForInstantiation(
+				compatiblePredicates, currentState);
+
+		// instantiate with constants in predicate found in chosenPred
+		for (int i = 0; i < chosenPred.getValence(); i++) {
+			if (!singlePred.getArgument(i).isInstantiated()) {
+				// instantiate updates the java object of the variable.
+				// all references to this variable in other predicates
+				// will now reference to the instantiated variable.
+				singlePred.getArgument(i).instantiate(
+						chosenPred.getArgument(i).getValue());
+			}
+		}
+		return;
+
 	}
 
-	private Operator findOperatorToResolve(SinglePredicate predToResolve) throws Exception {
+	private Operator findOperatorToResolve(Predicate predToResolve)
+			throws Exception {
 		// Finds an operator that has a compatible precondition in its add-list
 		// to resolve predToResolve:
 		for (Operator op : this.operators) {
 			Operator opCopy = op.getClass().newInstance();
-			for (SinglePredicate predCandidate : opCopy.getAdd().getSinglePredicates()) {
+			for (Predicate predCandidate : opCopy.getAdd().toList()) {
 				if (predCandidate.isCompatibleTo(predToResolve)) {
 					// instantiate opCopy with predToResolve
 					for (int i = 0; i < predToResolve.getValence(); i++) {
 						if (!predCandidate.getArgument(i).isInstantiated()) {
-							predCandidate.getArgument(i).instantiate(predToResolve.getArgument(i).getValue());
+							predCandidate.getArgument(i).instantiate(
+									predToResolve.getArgument(i).getValue());
 						}
 					}
 					return opCopy;
@@ -139,7 +170,8 @@ public class LinearPlanner {
 
 			}
 		}
-		throw new Exception("There was no operator found to resolve a predicate. There is no possible plan.");
+		throw new Exception(
+				"There was no operator found to resolve a predicate. There is no possible plan.");
 	}
 
 }
