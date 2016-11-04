@@ -16,6 +16,8 @@ import problem.coffee.pred.args.PositiveInteger;
 public class InitialState extends State {
 
 	public InitialState() {
+		super(null);
+		
 		ConjunctivePredicate predicates = new ConjunctivePredicate();
 
 		SinglePredicate robotLocation = new ProbotLocation(new Location(new Coordinate(1, 1)));

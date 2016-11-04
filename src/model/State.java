@@ -7,6 +7,10 @@ public class State {
 
 	protected ConjunctivePredicate predicates;
 
+	public State(ConjunctivePredicate predicates) {
+		this.predicates = predicates;
+ 	}
+	
 	public ConjunctivePredicate getPredicates() {
 		return this.predicates;
 	}
@@ -54,4 +58,8 @@ public class State {
 		return false;
 	}
 
+	@Override
+	public String toString() {		
+		return "State: "+ predicates.toString();
+	}
 }

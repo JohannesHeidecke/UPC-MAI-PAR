@@ -10,6 +10,7 @@ public class InitialState extends State {
 	
 	
 	public InitialState() {
+		super(null);
 		ConjunctivePredicate predicates = new ConjunctivePredicate();
 		
 		SinglePredicate isAt = new PisAt(new Location("Paris"));
