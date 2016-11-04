@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SinglePredicate extends Predicate {
+public class SinglePredicate extends STRIPElement {
 
 	private String identifier;
 	private List<Variable> arguments;
