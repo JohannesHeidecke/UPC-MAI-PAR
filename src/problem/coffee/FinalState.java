@@ -14,6 +14,8 @@ import problem.coffee.pred.args.Location;
 import problem.coffee.pred.args.PositiveInteger;
 
 public class FinalState extends State {
+	
+//	TODO: delete?
 
 	public FinalState() {
 		super(null);

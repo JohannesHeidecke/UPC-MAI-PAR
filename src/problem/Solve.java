@@ -27,6 +27,7 @@ public class Solve {
 			filePath = args[0];
 		} else {
 			filePath = "./data/generated/example1";
+//			filePath = "./data/test2";
 		}
 		
 		File testFile = new File(filePath);
@@ -49,7 +50,7 @@ public class Solve {
 		LinearPlanner planner = new LinearPlanner(initialState, finalState,
 				operators);
 		Plan plan = null;
-		Heuristic heuristic = new CoffeeHeuristic(false, false);
+		Heuristic heuristic = new CoffeeHeuristic(true, true);
 		double startTime = System.currentTimeMillis();
 		try {
 

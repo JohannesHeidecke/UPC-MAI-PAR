@@ -13,5 +13,9 @@ public class Ppetition extends Predicate{
 	public Ppetition(Location o, PositiveInteger n) {
 		super("petition", new ArrayList<Variable>(Arrays.asList(o, n)));
 	}
+	
+	public Location getLocation() {
+		return (Location) super.getArgument(0);
+	}
 
 }
