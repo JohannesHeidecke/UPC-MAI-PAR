@@ -27,7 +27,7 @@ public class Solve {
 			filePath = args[0];
 		} else {
 			filePath = "./data/generated/example1";
-//			filePath = "./data/test2";
+//			filePath = "./data/test0";
 		}
 		
 		File testFile = new File(filePath);

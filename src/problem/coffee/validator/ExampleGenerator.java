@@ -11,8 +11,8 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class ExampleGenerator {
 
-	private static int sizeX = 100;
-	private static int sizeY = 100;
+	private static int sizeX = 6;
+	private static int sizeY = 6;
 
 	public static void main(String[] args) throws UnsupportedEncodingException, FileNotFoundException, IOException {
 		
@@ -32,9 +32,9 @@ public class ExampleGenerator {
 				// Minimum: 3
 				// Maximum: half of available fields
 				int nOMachines = ThreadLocalRandom.current().nextInt(3,
-						(sizeX * sizeY) / 2);
+						(sizeX * sizeY) / 4);
 				int nOPetitions = ThreadLocalRandom.current().nextInt(3,
-						(sizeX * sizeY) / 2);
+						(sizeX * sizeY) / 4);
 
 				// Split the machines into capacities 1, and 3:
 				int cutPoint1 = 0, cutPoint2 = 0;

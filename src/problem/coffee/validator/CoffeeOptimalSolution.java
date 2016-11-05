@@ -180,7 +180,8 @@ public class CoffeeOptimalSolution {
 	
 	public static void main(String[] args) throws IOException {
 
-		String filePath = "./data/test1";
+//		String filePath = "./data/test0";
+		String filePath = "./data/generated/example1";
 		File testFile = new File(filePath);
 		
 		Parser parser = new CoffeeParser(6, 6);
