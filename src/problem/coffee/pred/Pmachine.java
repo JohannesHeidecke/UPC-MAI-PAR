@@ -18,4 +18,8 @@ public class Pmachine extends Predicate {
 		return (Location) super.getArgument(0);
 	}
 
+	public PositiveInteger getN()
+	{
+		return (PositiveInteger) super.getArgument(1);
+	}
 }
