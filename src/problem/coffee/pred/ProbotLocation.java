@@ -13,4 +13,8 @@ public class ProbotLocation extends Predicate {
 		super("robotLocation", new ArrayList<Variable>(Arrays.asList(o)));
 	}
 
+	public Location getLocation() {
+		return (Location) super.getArgument(0);
+	}
+
 }
