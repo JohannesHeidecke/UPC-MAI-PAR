@@ -26,7 +26,7 @@ public class Solve {
 		if(args.length > 0) {
 			filePath = args[0];
 		} else {
-			filePath = "./data/test3";
+			filePath = "./data/generated/example1";
 		}
 		
 		File testFile = new File(filePath);
@@ -49,7 +49,8 @@ public class Solve {
 		LinearPlanner planner = new LinearPlanner(initialState, finalState,
 				operators);
 		Plan plan = null;
-		Heuristic heuristic = new CoffeeHeuristic(true, true);
+		Heuristic heuristic = new CoffeeHeuristic(false, false);
+		double startTime = System.currentTimeMillis();
 		try {
 
 			plan = planner.calculatePlan(heuristic);
@@ -57,5 +58,6 @@ public class Solve {
 			e.printStackTrace();
 		}
 		System.out.println(plan);
+		System.out.println("Time: "+(System.currentTimeMillis()-startTime)/1000+"s");
 	}
 }
