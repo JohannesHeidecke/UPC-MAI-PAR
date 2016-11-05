@@ -26,7 +26,7 @@ public class Solve {
 		if(args.length > 0) {
 			filePath = args[0];
 		} else {
-			filePath = "./data/test1";
+			filePath = "./data/test3";
 		}
 		
 		File testFile = new File(filePath);

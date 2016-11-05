@@ -109,6 +109,7 @@ public class LinearPlanner {
 					// find constant to instantiate the variables and set this
 					// constant in entire stack:
 					instantiate(singlePred, heuristic);
+					System.out.println(" --->\t" + singlePred);
 				}
 			}
 		}
@@ -130,6 +131,11 @@ public class LinearPlanner {
 			if (currPred.isCompatibleTo(singlePred)) {
 				compatiblePredicates.add(currPred);
 			}
+		}
+
+		if (compatiblePredicates.isEmpty()) {
+			throw new RuntimeException("There was no compatible predicate found to resolve the predicate "
+							+ singlePred);
 		}
 
 		// Heuristic chooses one candidate from compatiblePredicates

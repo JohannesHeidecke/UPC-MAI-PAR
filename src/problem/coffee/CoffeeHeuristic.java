@@ -34,6 +34,8 @@ public class CoffeeHeuristic extends Heuristic {
 			return predicates;
 		}
 		
+		System.out.println("HEURISTIC: 'served' ordering");
+		
 		List<Predicate> result = new ArrayList<>();
 		for (Predicate pred : predicates) {
 			result.add(pred);
@@ -93,6 +95,8 @@ public class CoffeeHeuristic extends Heuristic {
 			return compatiblePredicates.get(0);
 		}
 		
+		
+		
 		// MACHINE SELECTION HEURISTIC:
 		// filter out all machines
 		List<Pmachine> machinePreds = new ArrayList<>();
@@ -103,6 +107,7 @@ public class CoffeeHeuristic extends Heuristic {
 		}
 		
 		if(machinePreds.size() > 0) {
+			System.out.println("HEURISTIC: 'machine' selection");
 			Location currentPos = null;
 			for (Predicate pred : currentState.getPredicates().toList()) {
 				if (pred.getIdentifier().equals("robotLocation")) {
