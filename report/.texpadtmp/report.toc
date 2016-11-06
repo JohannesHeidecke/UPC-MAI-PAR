@@ -1,18 +1,24 @@
-\contentsline {section}{\numberline {1}Introduction}{2}{section.1}
-\contentsline {section}{\numberline {2}Problem Analysis}{2}{section.2}
-\contentsline {subsection}{\numberline {2.1}Predicates}{2}{subsection.2.1}
-\contentsline {subsection}{\numberline {2.2}Intitial and Goal States}{3}{subsection.2.2}
-\contentsline {subsection}{\numberline {2.3}Operators}{3}{subsection.2.3}
-\contentsline {subsection}{\numberline {2.4}Search Space}{4}{subsection.2.4}
-\contentsline {subsection}{\numberline {2.5}Special Cases}{5}{subsection.2.5}
-\contentsline {section}{\numberline {3}Planning Algorithm}{5}{section.3}
-\contentsline {subsection}{\numberline {3.1}STRIPS Algorithm}{5}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Heuristics}{5}{subsection.3.2}
-\contentsline {section}{\numberline {4}Implementation}{5}{section.4}
-\contentsline {subsection}{\numberline {4.1}Class structure}{5}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Implementation details}{6}{subsection.4.2}
-\contentsline {section}{\numberline {5}Tests}{6}{section.5}
-\contentsline {section}{\numberline {6}Results}{6}{section.6}
-\contentsline {section}{Appendices}{7}{section*.2}
-\contentsline {section}{\numberline {A}Included Files}{7}{Appendix.1.A}
-\contentsline {section}{\numberline {B}Eclipse Instructions}{7}{Appendix.1.B}
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}
+\contentsline {subsection}{\numberline {1.1}Problem Description}{3}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Report Overview}{3}{subsection.1.2}
+\contentsline {section}{\numberline {2}Problem Analysis}{3}{section.2}
+\contentsline {subsection}{\numberline {2.1}Predicates}{3}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Intitial and Goal States}{4}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}Operators}{4}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.4}Search Space}{5}{subsection.2.4}
+\contentsline {subsection}{\numberline {2.5}Special Cases}{6}{subsection.2.5}
+\contentsline {section}{\numberline {3}Planning Algorithm}{6}{section.3}
+\contentsline {subsection}{\numberline {3.1}STRIPS Algorithm}{6}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Heuristics}{7}{subsection.3.2}
+\contentsline {subsubsection}{\numberline {3.2.1}The Served-Heuristic}{7}{subsubsection.3.2.1}
+\contentsline {subsubsection}{\numberline {3.2.2}The Machine-Heuristic}{8}{subsubsection.3.2.2}
+\contentsline {section}{\numberline {4}Implementation}{9}{section.4}
+\contentsline {subsection}{\numberline {4.1}General Structure}{9}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Problem Implementation}{10}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Heuristic Details}{10}{subsection.4.3}
+\contentsline {section}{\numberline {5}Tests}{12}{section.5}
+\contentsline {section}{\numberline {6}Results}{12}{section.6}
+\contentsline {section}{\numberline {7}Outlook}{12}{section.7}
+\contentsline {section}{Appendices}{13}{section*.4}
+\contentsline {section}{\numberline {A}Included Files}{13}{Appendix.1.A}
+\contentsline {section}{\numberline {B}Eclipse Instructions}{13}{Appendix.1.B}

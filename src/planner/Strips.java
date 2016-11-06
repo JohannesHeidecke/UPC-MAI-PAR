@@ -20,8 +20,7 @@ public class Strips {
 	private PrintStream output;
 	private StripsStack stack;
 
-	public Strips(State initialState, State finalState,
-			List<Operator> operators) {
+	public Strips(State initialState, State finalState, List<Operator> operators) {
 
 		this.initialState = initialState;
 		this.finalState = finalState;
@@ -33,7 +32,7 @@ public class Strips {
 
 		setOutput(System.out);
 	}
-	
+
 	public Plan calculatePlan(Heuristic heuristic) throws Exception {
 
 		// Calculate plan according to STRIP algorithm (linear planner with goal
@@ -52,8 +51,8 @@ public class Strips {
 		// https://en.wikipedia.org/wiki/Nearest_neighbour_algorithm
 		// start at served(o) with o closest to current position
 		// then go on by choosing the nearest neighbor.
-		List<Predicate> goalPredicates = heuristic.heuristicPushOrder(
-				finalState.getPredicates().toList(), currentState);
+		List<Predicate> goalPredicates = heuristic.heuristicPushOrder(finalState.getPredicates().toList(),
+				currentState);
 		for (Predicate singlePred : goalPredicates) {
 			stack.push(singlePred);
 		}
@@ -80,8 +79,7 @@ public class Strips {
 
 				// Push all predicates from list that are not true in current
 				// state to the stack:
-				for (Predicate falsePred : currentState
-						.getFalseSinglePredicates(conjPred)) {
+				for (Predicate falsePred : currentState.getFalseSinglePredicates(conjPred)) {
 					stack.push(falsePred);
 				}
 			} else if (currentElement instanceof Predicate) {
@@ -95,8 +93,7 @@ public class Strips {
 						Operator operator = findOperatorToResolve(singlePred);
 						// Push the operator
 						stack.push(operator);
-						ConjunctivePredicate preconditions = operator
-								.getPreconditions();
+						ConjunctivePredicate preconditions = operator.getPreconditions();
 						// Push a list of preconditions of the operator:
 						stack.push(preconditions);
 						// Push each single precondition:
@@ -140,29 +137,26 @@ public class Strips {
 		}
 
 		if (compatiblePredicates.isEmpty()) {
-			throw new RuntimeException("There was no compatible predicate found to resolve the predicate "
-							+ singlePred);
+			throw new RuntimeException(
+					"There was no compatible predicate found to resolve the predicate " + singlePred);
 		}
 
 		// Heuristic chooses one candidate from compatiblePredicates
-		Predicate chosenPred = heuristic.choosePredicateForInstantiation(
-				compatiblePredicates, currentState);
+		Predicate chosenPred = heuristic.choosePredicateForInstantiation(compatiblePredicates, currentState);
 
 		// instantiate with singlePred with constants of chosenPred
 		for (int i = 0; i < chosenPred.getValence(); i++) {
 			if (!singlePred.getArgument(i).isInstantiated()) {
-				// instantiate updates the java object of the variable.
-				// all references to this variable in other predicates
+				// Update the Java object of the variable.
+				// All references to this variable in other predicates
 				// will now reference to the instantiated variable.
-				singlePred.getArgument(i).instantiate(
-						chosenPred.getArgument(i).getValue());
+				singlePred.getArgument(i).instantiate(chosenPred.getArgument(i).getValue());
 			}
 		}
 
 	}
 
-	private Operator findOperatorToResolve(Predicate predToResolve)
-			throws Exception {
+	private Operator findOperatorToResolve(Predicate predToResolve) throws Exception {
 		// Finds an operator that has a compatible precondition in its add-list
 		// to resolve predToResolve:
 		for (Operator op : this.operators) {
@@ -172,8 +166,7 @@ public class Strips {
 					// instantiate opCopy with predToResolve
 					for (int i = 0; i < predToResolve.getValence(); i++) {
 						if (!predCandidate.getArgument(i).isInstantiated()) {
-							predCandidate.getArgument(i).instantiate(
-									predToResolve.getArgument(i).getValue());
+							predCandidate.getArgument(i).instantiate(predToResolve.getArgument(i).getValue());
 						}
 					}
 					return opCopy;
@@ -181,11 +174,10 @@ public class Strips {
 
 			}
 		}
-		throw new RuntimeException(
-				"There was no operator found to resolve a predicate. There is no possible plan.");
+		throw new RuntimeException("There was no operator found to resolve a predicate. There is no possible plan.");
 	}
 
-	public void setOutput(OutputStream outputStream){
+	public void setOutput(OutputStream outputStream) {
 		output = new PrintStream(outputStream);
 		stack.setOutput(output);
 	}

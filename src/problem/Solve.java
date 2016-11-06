@@ -2,7 +2,11 @@ package problem;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import model.Heuristic;
@@ -18,15 +22,16 @@ import problem.parser.Parser;
 import problem.parser.coffee.CoffeeParser;
 
 public class Solve {
+	
+	private final static String INPUT_PATH = "./data/examples/test0";
 
 	public static void main(String[] args) throws IOException {
-		// test
 		
 		String filePath;
 		if(args.length > 0) {
 			filePath = args[0];
 		} else {
-			filePath = "./data/examples/test0";
+			filePath = INPUT_PATH;
 		}
 		
 		File testFile = new File(filePath);
@@ -48,6 +53,12 @@ public class Solve {
 
 		Strips planner = new Strips(initialState, finalState,
 				operators);
+		
+		// Set output location:
+		String folder = "./data/out/";
+		String strDate = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new Date());
+		OutputStream output = new PrintStream(new File(folder + "output" + strDate + ".txt"));
+		planner.setOutput(output);
 		Plan plan = null;
 		Heuristic heuristic = new CoffeeHeuristic(true, true);
 		double startTime = System.currentTimeMillis();
@@ -56,7 +67,7 @@ public class Solve {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println(plan);
+		((PrintStream) output).println(plan);
 		System.out.println("Time: "+(System.currentTimeMillis()-startTime)/1000+"s");
 	}
 }

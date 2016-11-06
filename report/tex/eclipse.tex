@@ -1,3 +1,30 @@
 \section{Eclipse Instructions}
 
-Instructions to execute the program. 
+
+\begin{enumerate}
+	\item Import the project via \texttt{File > Import > Existing Projects into Workspace}
+	\item Navigate to class \texttt{problem.Solve}
+	\item Choose the input file for the main method by either:
+	\begin{itemize}
+		\item Changing the constant \texttt{INPUT\_PATH} to the desired path, or
+		\item Going to \texttt{Run > Run Configuration > Arguments > Program arguments} and copying the relative or absolute file path in the first line.
+	\end{itemize}
+	\item Run the main method of \texttt{problem.Solve}.
+	\item The results can be found in the directory \texttt{data/out}.
+\end{enumerate}
+
+
+To run the experiment that our results are based on:
+
+\begin{enumerate}
+	\item Navigate to class \texttt{problem.coffee.validator.CoffeeExperiments}.
+	\item Run the main method.
+	\item Results can be found in the directory \texttt{data/generated}:
+	\begin{itemize}
+		\item \texttt{steps...} contains the number of steps for the different methods.
+		\item \texttt{test...}
+		\item test\_matrix
+	\end{itemize}
+	
+\end{enumerate}
+
