@@ -4,20 +4,20 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.Stack;
 
-import model.STRIPElement;
+import model.StripsElement;
 
-public class LinearPlannerStack {
+public class StripsStack {
 	
-	private Stack<STRIPElement> stack;
+	Stack<StripsElement> stack;
 	private PrintStream output;
 	
-	public LinearPlannerStack() {
+	public StripsStack() {
 		this.stack = new Stack<>();
 		this.output = System.out;
 	}
 	
 	
-	public void push(STRIPElement el) {
+	public void push(StripsElement el) {
 		this.stack.push(el);
 		output.println("PUSH: \t" +el.toString());
 	}
@@ -26,8 +26,8 @@ public class LinearPlannerStack {
 		return this.stack.isEmpty();
 	}
 
-	public STRIPElement pop() {
-		STRIPElement currentElement = this.stack.pop();
+	public StripsElement pop() {
+		StripsElement currentElement = this.stack.pop();
 		output.println(" POP: \t" +currentElement.toString());
 		return currentElement;
 	}

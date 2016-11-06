@@ -1,11 +1,94 @@
 \section{Problem Analysis}
 \label{sec:PA}
 
-Analysis of the problem (search space, operators, pre-conditions, special situations, etc.)
+To analyze this problem thoroughly, we describe the used predicates (subsection \ref{sub:pred}), the possible initial and goal states (subsection \ref{sub:igs}), the operators (subsection \ref{sub:op}), the search space (subsection \ref{sub:ss}) and special cases (subsection \ref{sub:sc}).
 
 \subsection{Predicates}
+\label{sub:pred}
+
+The used predicates are the following:
+
+\begin{itemize}
+	\item \texttt{Robot-location(o)}: The robot is in office $ o $. We chose a coordinate based representation of offices where each $ o $ is defined by its coordinates $[x, y]$. 
+	\item \texttt{Robot-free}: The robot does not have any coffee loaded.
+	\item \texttt{Robot-loaded(n)}: The robot has $ n $ cups of coffee loaded with $n \in \{1, 2, 3\} $.
+	\item \texttt{Petition(o, n)}: $ n $ cups of coffee are required in office $ o $ with $n \in \{1, 2, 3\} $.
+	\item \texttt{Served(o)}: Office $ o $ has been served.
+	\item \texttt{Machine(o, n)}: There is a coffee machine in office $ o $ that produces exactly $ n $ cups of coffee with $n \in \{1, 2, 3\} $.
+	\item \texttt{Steps(x)}: The robot has moved $ x $ steps with $ x \in \mathbb{N}_0 $.
+\end{itemize}
+
+\subsection{Intitial and Goal States}
+\label{sub:igs}
+
+The \textbf{initial state} of any problem is composed as follows: 
+
+\begin{itemize}
+	\item \textbf{Required predicates}: \textit{Robot-free}, \textit{Steps(0)}, \textit{Robot-location(o)} where $ o $ is a valid office location.
+	\item \textbf{Optional predicates}: One or more \textit{Petition(o,n)} with at most one petition for each office. 
+	\item \textbf{Conditionally required predicates}: For each $ n^* \in \{1, 2, 3\} $ that occurs in a $ Petition(o, n^*) $, there has to be at least one \textit{Machine(o, n)} with fitting $ n = n^* $ in order to guarantee that the problem is solvable.
+\end{itemize}
+
+The \textbf{final state} of any problem is composed as follows:
+
+\begin{itemize}
+	\item \textbf{Optional predicates}: A \textit{Robot-location(o)} can be specified.
+	\item \textbf{Conditionally required predicates}: For each $o^*$ that occurs in a $ Petition(o^*, n)$, there must be exactly one $ Served(o^*) $ predicate in the final state.
+\end{itemize} 
+ 
 
 \subsection{Operators}
+\label{sub:op}
+
+This problem contains three operators that can be applied to reach the final state starting from the initial state. These operators are: $Move(o_1, o_2)$, $Make(o,n)$ and $Serve(o,n)$.
+\subsubsection*{Move:}
+The operator \textbf{$Move(o_1, o_2)$} allows the robot to move between offices and is set up in the following way:
+\begin{itemize}
+	\item \textbf{Preconditions}: Robot-location($o_1$), Steps($x$).
+	\item \textbf{Add}: Robot-location($o_2$), Steps($x+distance(o_1, o2)$).
+	\item \textbf{Delete}: Robot-location($o_1$), Steps($x$).
+\end{itemize}
+
+\subsubsection*{Make:}
+The operator \textbf{$Make(o, n)$} allows the robot to make coffee in an office with a machine and is set up in the following way:
+\begin{itemize}
+	\item \textbf{Preconditions}: Robot-location($o$), Robot-free, Machine($o,n$).
+	\item \textbf{Add}: Robot-loaded($n$).
+	\item \textbf{Delete}: Robot-free.
+\end{itemize}
+
+\subsubsection*{Serve:}
+The operator \textbf{$Serve(o, n)$} allows the robot to serve coffee and is set up in the following way:
+\begin{itemize}
+	\item \textbf{Preconditions}: Robot-location($o$), Robot-loaded($n$), Petition($o,n$).
+	\item \textbf{Add}:  Served($o$), Robot-free.
+	\item \textbf{Delete}: Robot-loaded($n$), Petition($o,n$).
+\end{itemize}
+
+\subsection{Search Space}
+\label{sub:ss}
+
+The search space of a problem is the subset of the state space that can be reached by applying the operators, starting at the initial state. The nodes in the search space correspond to states of the world, while the edges correspond to state transitions through operators.
+
+To compute the size of the search space we have to consider how many states we can reach from a given initial state by only applying our operators. In order to compute the size of the search space we take the following considerations into account:
+
+\begin{itemize}
+	\item The predicate Robot-location($o$) is always present exactly one time in each state, since it is required in the initial state and no operator adds this predicate without deleting a different instantiation of it and vice versa. There are $36$ different values for $o$ (one for every office in the world. 
+	\item Robot-free and Robot-loaded(n) cannot be part of a state at the same time (see Make and Serve operators). Robot-loaded(n) can take three different values: $1, 2$ and $3$. This leads to $4$ different combinations: Robot-free, Robot-loaded($1$), Robot-loaded($2$) and Robot-loaded($3$).
+	\item The Petition($o,n$) predicates are taken from the initial state and can then be removed via the Serve operator. Since each Petition predicate can either still be present or replaced with a Served predicate, the number of possible states is $2^{|P|}$ where $|P|$ is the number of petitions in the initial state.
+	\item The predicate Steps($x$) is only present once, but $x$ can take a arbitrary integer value larger than 0.
+\end{itemize}
+
+The Steps($x$) predicate makes the search space infinitely large. Since our goal is to both reach the final state while minimizing $x$, we will consider the search space ignoring $x$ and then later twist our algorithm in a way to explore the search space with consideration to keeping $x$ small.
+
+Ignoring the Steps($x$) predicate, our search space is of size $36 \cdot 4 \cdot 2^{|P|}$ with $|P|$ being the number of petitions in the initial state. The size of the search space grows exponentially with the number of petitions.
+
+
+\subsection{Special Cases}
+\label{sub:sc}
+
+Some combinations of initial states and final states are not able to be solved. This is the case when the final state is not part of the search space. An example case for this scenario is a Petition($o,n_p$) predicate that does not have a matching Machine($o, n_m$) with $n_p=n_m$. 
+
 
 
 

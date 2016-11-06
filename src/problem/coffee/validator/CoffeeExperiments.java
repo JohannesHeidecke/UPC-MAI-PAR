@@ -15,7 +15,7 @@ import java.util.List;
 import model.Operator;
 import model.Plan;
 import model.State;
-import planner.LinearPlanner;
+import planner.Strips;
 import problem.coffee.CoffeeHeuristic;
 import problem.coffee.helpers.Helper;
 import problem.coffee.operators.OServe;
@@ -65,7 +65,7 @@ public class CoffeeExperiments {
 		State initialState = parser.getInitialState(), finalState = parser.getGoalState();
 		
 		CoffeeOptimalSolution solver = new CoffeeOptimalSolution(initialState, finalState);
-		LinearPlanner planner = new LinearPlanner(initialState, finalState, operators);
+		Strips planner = new Strips(initialState, finalState, operators);
 		planner.setOutput(plannerOutput);
 				
 		int heurs_n = travelingSalesmanOrder.length;
