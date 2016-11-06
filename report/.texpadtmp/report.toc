@@ -23,6 +23,6 @@
 \contentsline {subsection}{\numberline {6.1}Manually Created Worlds}{14}{subsection.6.1}
 \contentsline {subsection}{\numberline {6.2}Automatically created worlds}{14}{subsection.6.2}
 \contentsline {section}{\numberline {7}Outlook}{16}{section.7}
-\contentsline {section}{Appendices}{19}{section*.13}
+\contentsline {section}{Appendices}{19}{section*.14}
 \contentsline {section}{\numberline {A}Included Files}{19}{Appendix.1.A}
 \contentsline {section}{\numberline {B}Eclipse Instructions}{19}{Appendix.1.B}

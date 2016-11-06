@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  6 NOV 2016 22:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  6 NOV 2016 22:51
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -972,7 +972,7 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.26 ...ine {section}{Appendices}{19}{section*.13}
+l.26 ...ine {section}{Appendices}{19}{section*.14}
                                                    [1])
 \tf@toc=\write4
 \openout4 = `report.toc'.
@@ -1004,32 +1004,32 @@ File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 22.
- [6] <img/servedHeur1.png, id=250, 615.29875pt x 614.295pt>
+ [6] <img/servedHeur1.png, id=252, 615.29875pt x 614.295pt>
 File: img/servedHeur1.png Graphic file (type png)
  <use img/servedHeur1.png>
 Package pdftex.def Info: img/servedHeur1.png used on input line 82.
 (pdftex.def)             Requested size: 170.71652pt x 170.43607pt.
- <img/servedHeur2.png, id=252, 612.2875pt x 612.2875pt>
+ <img/servedHeur2.png, id=254, 612.2875pt x 612.2875pt>
 File: img/servedHeur2.png Graphic file (type png)
  <use img/servedHeur2.png>
 Package pdftex.def Info: img/servedHeur2.png used on input line 83.
 (pdftex.def)             Requested size: 170.71652pt x 170.71059pt.
- [7] <img/mHeur1.png, id=277, 613.29124pt x 614.295pt>
+ [7] <img/mHeur1.png, id=279, 613.29124pt x 614.295pt>
 File: img/mHeur1.png Graphic file (type png)
  <use img/mHeur1.png>
 Package pdftex.def Info: img/mHeur1.png used on input line 104.
 (pdftex.def)             Requested size: 113.81102pt x 113.98961pt.
- <img/mHeur2.png, id=278, 613.29124pt x 614.295pt>
+ <img/mHeur2.png, id=280, 613.29124pt x 614.295pt>
 File: img/mHeur2.png Graphic file (type png)
  <use img/mHeur2.png>
 Package pdftex.def Info: img/mHeur2.png used on input line 105.
 (pdftex.def)             Requested size: 113.81102pt x 113.98961pt.
- <img/mHeur3.png, id=279, 615.29875pt x 613.29124pt>
+ <img/mHeur3.png, id=281, 615.29875pt x 613.29124pt>
 File: img/mHeur3.png Graphic file (type png)
  <use img/mHeur3.png>
 Package pdftex.def Info: img/mHeur3.png used on input line 106.
 (pdftex.def)             Requested size: 113.81102pt x 113.43839pt.
-) (./tex/implementation.tex [8 <./img/servedHeur1.png> <./img/servedHeur2.png> <./img/mHeur1.png> <./img/mHeur2.png> <./img/mHeur3.png>] <uml/CD1.png, id=298, 607.7907pt x 417.7206pt>
+) (./tex/implementation.tex [8 <./img/servedHeur1.png> <./img/servedHeur2.png> <./img/mHeur1.png> <./img/mHeur2.png> <./img/mHeur3.png>] <uml/CD1.png, id=300, 607.7907pt x 417.7206pt>
 File: uml/CD1.png Graphic file (type png)
  <use uml/CD1.png>
 Package pdftex.def Info: uml/CD1.png used on input line 11.
@@ -1039,7 +1039,7 @@ Overfull \hbox (43.36464pt too wide) in paragraph at lines 11--12
 [][] 
  []
 
-[9 <./uml/CD1.png>] <uml/CD2.png, id=306, 616.4631pt x 361.35pt>
+[9 <./uml/CD1.png>] <uml/CD2.png, id=308, 616.4631pt x 361.35pt>
 File: uml/CD2.png Graphic file (type png)
  <use uml/CD2.png>
 Package pdftex.def Info: uml/CD2.png used on input line 37.
@@ -1049,7 +1049,7 @@ Overfull \hbox (43.36464pt too wide) in paragraph at lines 37--38
 [][] 
  []
 
-<uml/CD3.png, id=308, 375.0813pt x 248.6088pt>
+<uml/CD3.png, id=310, 375.0813pt x 248.6088pt>
 File: uml/CD3.png Graphic file (type png)
  <use uml/CD3.png>
 Package pdftex.def Info: uml/CD3.png used on input line 45.
@@ -1089,37 +1089,52 @@ Overfull \hbox (49.26978pt too wide) in paragraph at lines 10--11
 []\OT1/cmtt/m/n/10.95 InitialState=Robot-location(o1);Machine(o16,1);Petition(o26,1);Robot-free; Steps(0);
  []
 
+<img/w1.png, id=381, 613.29124pt x 613.29124pt>
+File: img/w1.png Graphic file (type png)
+ <use img/w1.png>
+Package pdftex.def Info: img/w1.png used on input line 16.
+(pdftex.def)             Requested size: 113.81102pt x 113.80334pt.
+ <img/w2.png, id=382, 618.31pt x 615.29875pt>
+File: img/w2.png Graphic file (type png)
+ <use img/w2.png>
+Package pdftex.def Info: img/w2.png used on input line 17.
+(pdftex.def)             Requested size: 113.81102pt x 113.25577pt.
+ <img/w3.png, id=383, 612.2875pt x 614.295pt>
+File: img/w3.png Graphic file (type png)
+ <use img/w3.png>
+Package pdftex.def Info: img/w3.png used on input line 18.
+(pdftex.def)             Requested size: 113.81102pt x 114.17706pt.
 
-Overfull \hbox (14.77765pt too wide) in paragraph at lines 15--16
+Overfull \hbox (14.77765pt too wide) in paragraph at lines 26--27
 []\OT1/cmtt/m/n/10.95 InitialState=Robot-location(o1);Machine(o16,1);Machine(o14,1);Petition(o26,1);
  []
 
-
-Overfull \hbox (3.28027pt too wide) in paragraph at lines 20--21
+[13]
+Overfull \hbox (3.28027pt too wide) in paragraph at lines 33--34
 []\OT1/cmtt/m/n/10.95 InitialState=Robot-location(o1);Machine(o29,1);Machine(o8,1);Petition(o3,1);
  []
 
 
-Overfull \hbox (26.27502pt too wide) in paragraph at lines 20--21
+Overfull \hbox (26.27502pt too wide) in paragraph at lines 33--34
 \OT1/cmtt/m/n/10.95 Petition(o32,1);Petition(o18,1);Petition(o19,1);Robot-free; Steps(0); GoalState=
  []
 
-[13]) (./tex/results.tex <img/t1.png, id=408, 614.295pt x 617.30624pt>
+) (./tex/results.tex <img/t1.png, id=416, 614.295pt x 617.30624pt>
 File: img/t1.png Graphic file (type png)
  <use img/t1.png>
 Package pdftex.def Info: img/t1.png used on input line 8.
 (pdftex.def)             Requested size: 216.81pt x 217.86893pt.
- <img/t2.png, id=409, 617.30624pt x 617.30624pt>
+ <img/t2.png, id=417, 617.30624pt x 617.30624pt>
 File: img/t2.png Graphic file (type png)
  <use img/t2.png>
 Package pdftex.def Info: img/t2.png used on input line 15.
 (pdftex.def)             Requested size: 216.81pt x 216.80455pt.
- <img/t3.png, id=410, 616.3025pt x 616.3025pt>
+ <img/t3.png, id=418, 616.3025pt x 616.3025pt>
 File: img/t3.png Graphic file (type png)
  <use img/t3.png>
 Package pdftex.def Info: img/t3.png used on input line 22.
 (pdftex.def)             Requested size: 216.81pt x 216.80937pt.
- <img/step_error_vs_heuristic.png, id=412, 433.62pt x 289.08pt>
+ <img/step_error_vs_heuristic.png, id=420, 433.62pt x 289.08pt>
 File: img/step_error_vs_heuristic.png Graphic file (type png)
  <use img/step_error_vs_heuristic.png>
 Package pdftex.def Info: img/step_error_vs_heuristic.png used on input line 35.
@@ -1129,7 +1144,7 @@ Overfull \hbox (43.36464pt too wide) in paragraph at lines 35--36
 [][] 
  []
 
-[14 <./img/t1.png>] <img/winner_ratio_vs_heuristic.png, id=420, 433.62pt x 289.08pt>
+[14 <./img/w1.png> <./img/w2.png> <./img/w3.png>] <img/winner_ratio_vs_heuristic.png, id=433, 433.62pt x 289.08pt>
 File: img/winner_ratio_vs_heuristic.png Graphic file (type png)
  <use img/winner_ratio_vs_heuristic.png>
 Package pdftex.def Info: img/winner_ratio_vs_heuristic.png used on input line 45.
@@ -1139,7 +1154,7 @@ Overfull \hbox (43.36464pt too wide) in paragraph at lines 45--46
 [][] 
  []
 
-<img/avg_error_vs_petitions.png, id=422, 433.62pt x 289.08pt>
+<img/avg_error_vs_petitions.png, id=435, 433.62pt x 289.08pt>
 File: img/avg_error_vs_petitions.png Graphic file (type png)
  <use img/avg_error_vs_petitions.png>
 Package pdftex.def Info: img/avg_error_vs_petitions.png used on input line 53.
@@ -1149,7 +1164,7 @@ Overfull \hbox (43.36464pt too wide) in paragraph at lines 53--54
 [][] 
  []
 
-<img/avg_error_vs_machines.png, id=424, 433.62pt x 289.08pt>
+<img/avg_error_vs_machines.png, id=437, 433.62pt x 289.08pt>
 File: img/avg_error_vs_machines.png Graphic file (type png)
  <use img/avg_error_vs_machines.png>
 Package pdftex.def Info: img/avg_error_vs_machines.png used on input line 61.
@@ -1159,7 +1174,7 @@ Overfull \hbox (43.36464pt too wide) in paragraph at lines 61--62
 [][] 
  []
 
-) (./tex/outlook.tex [15 <./img/t2.png> <./img/t3.png>]) [16 <./img/step_error_vs_heuristic.png>] [17 <./img/winner_ratio_vs_heuristic.png> <./img/avg_error_vs_petitions.png>] [18 <./img/avg_error_vs_machines.png>] (./tex/includedfiles.tex) (./tex/eclipse.tex)
+) (./tex/outlook.tex [15 <./img/t1.png> <./img/t2.png>]) [16 <./img/t3.png> <./img/step_error_vs_heuristic.png>] [17 <./img/winner_ratio_vs_heuristic.png>] [18 <./img/avg_error_vs_petitions.png> <./img/avg_error_vs_machines.png>] (./tex/includedfiles.tex) (./tex/eclipse.tex)
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 61.
  [19
 
@@ -1173,18 +1188,18 @@ Package rerunfilecheck Info: File `report.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 61.
  ) 
 Here is how much of TeX's memory you used:
- 18737 strings out of 493117
- 312240 string characters out of 6135433
- 443964 words of memory out of 5000000
- 21733 multiletter control sequences out of 15000+600000
+ 18757 strings out of 493117
+ 312506 string characters out of 6135433
+ 444023 words of memory out of 5000000
+ 21746 multiletter control sequences out of 15000+600000
  13924 words of font info for 52 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  40i,7n,42p,10395b,1925s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on /Users/Ihcrul/Development/repositories/UPC-MAI-PAR/report/.texpadtmp/report.pdf (20 pages, 2132753 bytes).
+Output written on /Users/Ihcrul/Development/repositories/UPC-MAI-PAR/report/.texpadtmp/report.pdf (20 pages, 2424837 bytes).
 PDF statistics:
- 550 PDF objects out of 1000 (max. 8388607)
- 478 compressed objects within 5 object streams
- 192 named destinations out of 1000 (max. 500000)
- 300 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 565 PDF objects out of 1000 (max. 8388607)
+ 487 compressed objects within 5 object streams
+ 196 named destinations out of 1000 (max. 500000)
+ 315 words of extra memory for PDF output out of 10000 (max. 10000000)
 
