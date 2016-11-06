@@ -6,7 +6,7 @@ import com.sun.org.apache.xpath.internal.operations.Variable;
 
 import model.ConjunctivePredicate;
 import model.Operator;
-import model.SinglePredicate;
+import model.Predicate;
 import problem.simple.pred.PisAt;
 import problem.simple.pred.args.Location;
 
@@ -22,12 +22,12 @@ public class OgoTo extends Operator {
 		l2 = new Location(null);
 		
 		ConjunctivePredicate preconditions = new ConjunctivePredicate();
-		SinglePredicate isAtL1 = new PisAt(l1);
+		Predicate isAtL1 = new PisAt(l1);
 		preconditions.add(isAtL1);
 		
 		
 		ConjunctivePredicate add = new ConjunctivePredicate();
-		SinglePredicate isAtL2 = new PisAt(l2);
+		Predicate isAtL2 = new PisAt(l2);
 		add.add(isAtL2);
 		
 		ConjunctivePredicate delete = new ConjunctivePredicate();

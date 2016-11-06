@@ -2,7 +2,7 @@ package problem.coffee.operators;
 
 import model.ConjunctivePredicate;
 import model.Operator;
-import model.SinglePredicate;
+import model.Predicate;
 import problem.coffee.pred.ProbotLocation;
 import problem.coffee.pred.Psteps;
 import problem.coffee.pred.args.Location;
@@ -22,16 +22,16 @@ public class Omove extends Operator {
 		xNew = new PositiveInteger(null);
 		
 		ConjunctivePredicate preconditions = new ConjunctivePredicate();
-		SinglePredicate robotLocation = new ProbotLocation(o1);
+		Predicate robotLocation = new ProbotLocation(o1);
 		preconditions.add(robotLocation);
-		SinglePredicate steps = new Psteps(x);
+		Predicate steps = new Psteps(x);
 		preconditions.add(steps);
 		this.preconditions = preconditions;
 		
 		ConjunctivePredicate add = new ConjunctivePredicate();
-		SinglePredicate robotLocationNew = new ProbotLocation(o2);
+		Predicate robotLocationNew = new ProbotLocation(o2);
 		add.add(robotLocationNew);
-		SinglePredicate stepsNew = new Psteps(xNew);
+		Predicate stepsNew = new Psteps(xNew);
 		add.add(stepsNew);
 		this.add = add;
 		
@@ -48,9 +48,7 @@ public class Omove extends Operator {
 	}
 	
 	private static Integer calculateSteps(PositiveInteger x, Location o1, Location o2) {
-		int distance = Math.abs(o1.getX() - o2.getX()) + Math.abs(o1.getY() - o2.getY());
-		int totalSteps = x.getIntValue() + distance;
-		return new Integer(totalSteps);
+		return new Integer(x.getIntValue() + o1.distanceTo(o2));
 	}
 	
 	@Override

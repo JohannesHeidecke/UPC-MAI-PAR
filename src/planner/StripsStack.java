@@ -2,18 +2,18 @@ package planner;
 
 import java.util.Stack;
 
-import model.STRIPElement;
+import model.StripsElement;
 
-public class LinearPlannerStack {
+public class StripsStack {
 	
-	Stack<STRIPElement> stack;
+	Stack<StripsElement> stack;
 	
-	public LinearPlannerStack() {
+	public StripsStack() {
 		this.stack = new Stack<>();
 	}
 	
 	
-	public void push(STRIPElement el) {
+	public void push(StripsElement el) {
 		this.stack.push(el);
 		System.out.println("PUSH: \t" +el.toString());
 	}
@@ -22,8 +22,8 @@ public class LinearPlannerStack {
 		return this.stack.isEmpty();
 	}
 
-	public STRIPElement pop() {
-		STRIPElement currentElement = this.stack.pop();
+	public StripsElement pop() {
+		StripsElement currentElement = this.stack.pop();
 		System.out.println(" POP: \t" +currentElement.toString());
 		return currentElement;
 	}

@@ -2,7 +2,7 @@ package problem.coffee.operators;
 
 import model.ConjunctivePredicate;
 import model.Operator;
-import model.SinglePredicate;
+import model.Predicate;
 import problem.coffee.pred.Ppetition;
 import problem.coffee.pred.ProbotFree;
 import problem.coffee.pred.ProbotLoaded;
@@ -21,18 +21,18 @@ public class OServe extends Operator {
 		n = new PositiveInteger(null);
 		
 		ConjunctivePredicate preconditions = new ConjunctivePredicate();
-		SinglePredicate robotLocation = new ProbotLocation(o);
+		Predicate robotLocation = new ProbotLocation(o);
 		preconditions.add(robotLocation);
-		SinglePredicate robotLoaded = new ProbotLoaded(n);
+		Predicate robotLoaded = new ProbotLoaded(n);
 		preconditions.add(robotLoaded);
-		SinglePredicate petition = new Ppetition(o, n);
+		Predicate petition = new Ppetition(o, n);
 		preconditions.add(petition);
 		this.preconditions = preconditions;
 		
 		ConjunctivePredicate add = new ConjunctivePredicate();
-		SinglePredicate served = new Pserved(o);
+		Predicate served = new Pserved(o);
 		add.add(served);
-		SinglePredicate robotFree = new ProbotFree();
+		Predicate robotFree = new ProbotFree();
 		add.add(robotFree);
 		this.add = add;
 		

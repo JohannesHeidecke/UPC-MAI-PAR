@@ -1,8 +1,8 @@
 package problem.coffee.pred;
 
-import model.SinglePredicate;
+import model.Predicate;
 
-public class ProbotFree extends SinglePredicate {
+public class ProbotFree extends Predicate {
 
 	public ProbotFree() {
 		super("robotFree");

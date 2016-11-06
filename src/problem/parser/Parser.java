@@ -9,7 +9,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 
 import model.ConjunctivePredicate;
-import model.SinglePredicate;
+import model.Predicate;
 import model.State;
 
 public abstract class Parser {
@@ -37,7 +37,6 @@ public abstract class Parser {
 		} else if (input.startsWith("GoalState=")) {
 			stateStringList = input.replaceAll("GoalState=", "").split("InitialState=");
 		} else {
-			// TODO: throw an exception?
 			return false;
 		}
 
@@ -53,11 +52,10 @@ public abstract class Parser {
 				// and finally split list of arguments separated by semicolon
 				String predName = predStr.split("\\(")[0];
 				String[] predArgs = predStr.replace(predName, "").replace("(", "").replace(")", "").split(",");
-				SinglePredicate pred = parsePredicate(predName, predArgs);
+				Predicate pred = parsePredicate(predName, predArgs);
 				
 				if (pred == null) {
 					// Invalid predicate found; exit the method
-					// TODO: throw an exception?
 					System.out.println("Invalid predicate: " + predStr);
 					return false;
 				} else {
@@ -83,5 +81,5 @@ public abstract class Parser {
 		return goalState;
 	}
 
-	protected abstract SinglePredicate parsePredicate(String predName, String[] predArgs);
+	protected abstract Predicate parsePredicate(String predName, String[] predArgs);
 }

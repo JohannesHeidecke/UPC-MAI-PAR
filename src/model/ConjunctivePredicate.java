@@ -4,28 +4,28 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class ConjunctivePredicate extends STRIPElement {
+public class ConjunctivePredicate extends StripsElement {
 
 	// The predicates that are part of the conjunction:
-	private List<SinglePredicate> predicates;
+	private List<Predicate> predicates;
 
 	public ConjunctivePredicate() {
 		predicates = new ArrayList<>();
 	}
 
-	public List<SinglePredicate> getSinglePredicates() {
+	public List<Predicate> toList() {
 		return this.predicates;
 	}
 
-	public void add(SinglePredicate singlePred) {
+	public void add(Predicate singlePred) {
 		this.predicates.add(singlePred);
 	}
 
-	public void remove(SinglePredicate singlePred) {
+	public void remove(Predicate singlePred) {
 		// Remove first occurrence of a SinglePredicate that is compatible to
 		// singlePred from conjunction:
-		for (Iterator<SinglePredicate> iterator = predicates.iterator(); iterator.hasNext();) {
-			SinglePredicate nextPred = iterator.next();
+		for (Iterator<Predicate> iterator = predicates.iterator(); iterator.hasNext();) {
+			Predicate nextPred = iterator.next();
 			if (nextPred.isCompatibleTo(singlePred)) {
 				iterator.remove();
 				return;
@@ -37,7 +37,7 @@ public class ConjunctivePredicate extends STRIPElement {
 	public String toString() {
 		String result = "{";
 		if (this.predicates != null) {
-			for (SinglePredicate pred : this.predicates) {
+			for (Predicate pred : this.predicates) {
 				result += pred.toString() + ", ";
 			}
 			// delete ", " in the end:

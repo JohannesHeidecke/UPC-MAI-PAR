@@ -3,17 +3,17 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SinglePredicate extends STRIPElement {
+public class Predicate extends StripsElement {
 
 	private String identifier;
 	private List<Variable> arguments;
 
-	public SinglePredicate(String identifier, List<Variable> arguments) {
+	public Predicate(String identifier, List<Variable> arguments) {
 		this.identifier = identifier;
 		this.arguments = arguments;
 	}
 
-	public SinglePredicate(String identifier) {
+	public Predicate(String identifier) {
 		this.identifier = identifier;
 	}
 
@@ -40,7 +40,7 @@ public class SinglePredicate extends STRIPElement {
 		}
 	}
 
-	public boolean isCompatibleTo(SinglePredicate other) {
+	public boolean isCompatibleTo(Predicate other) {
 		// Returns if predicates are equal or could be made equal via
 		// instantiation of not instantiated arguments:
 		if (!this.identifier.equals(other.identifier)) {
@@ -64,6 +64,10 @@ public class SinglePredicate extends STRIPElement {
 
 	public Variable getArgument(int index) {
 		return this.arguments.get(index);
+	}
+	
+	public String getIdentifier() {
+		return this.identifier;
 	}
 
 	@Override

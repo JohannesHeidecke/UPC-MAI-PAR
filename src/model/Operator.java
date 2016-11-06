@@ -1,8 +1,6 @@
 package model;
 
-import java.util.Set;
-
-public class Operator extends STRIPElement {
+public abstract class Operator extends StripsElement {
 	
 	protected ConjunctivePredicate preconditions;
 	protected ConjunctivePredicate add;
@@ -22,9 +20,6 @@ public class Operator extends STRIPElement {
 	}
 
 	public void apply() {
-		// normally: do nothing
-		// TODO: better description
-		// make abstract?
 		
 	}
 	

@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import model.SinglePredicate;
+import model.Predicate;
 import problem.coffee.pred.Pmachine;
 import problem.coffee.pred.Ppetition;
 import problem.coffee.pred.ProbotFree;
@@ -29,11 +29,11 @@ public class CoffeeParser extends Parser {
 	}
 	
 	@Override
-	public SinglePredicate parsePredicate(String predName, String[] predArgs) {
+	public Predicate parsePredicate(String predName, String[] predArgs) {
 		// Return SinglePredicate instance from the given name
 		// and list of arguments. Return null if predName is not valid
 		// TODO: add error checking for arguments
-		SinglePredicate newPred = null;
+		Predicate newPred = null;
 		if (predName.equals("Robot-free")) {
 			newPred = new ProbotFree();
 		}
