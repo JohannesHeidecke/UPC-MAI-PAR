@@ -49,4 +49,9 @@ public class Location extends Variable {
 		return Math.abs(this.getX()-lo.getX()) + Math.abs(this.getY()-lo.getY());
 	}
 
+	public static Integer distance(Location initialPos, Location middlePos, Location finalPos)
+	{
+		// number of steps from initial to middle and from middle to final
+		return initialPos.distanceTo(middlePos) + middlePos.distanceTo(finalPos);
+	}
 }

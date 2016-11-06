@@ -1,5 +1,7 @@
 package planner;
 
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,32 +12,36 @@ import model.Plan;
 import model.StripsElement;
 import model.Predicate;
 import model.State;
-import model.Variable;
 
 public class Strips {
 
 	private List<Operator> operators;
 	private State initialState, finalState, currentState;
+	private PrintStream output;
 	private StripsStack stack;
 
 	public Strips(State initialState, State finalState,
 			List<Operator> operators) {
 
 		this.initialState = initialState;
-		this.currentState = initialState;
 		this.finalState = finalState;
+		// currentState is initialized each time a plan is calculated
+		this.currentState = null;
 		this.operators = operators;
 
 		stack = new StripsStack();
 
+		setOutput(System.out);
 	}
-
+	
 	public Plan calculatePlan(Heuristic heuristic) throws Exception {
 
 		// Calculate plan according to STRIP algorithm (linear planner with goal
 		// stack):
-
+		// initialize each time a plan is calculated
+		this.currentState = new State(this.initialState);
 		Plan plan = new Plan();
+		plan.setOutput(output);
 
 		// Push goal predicates from final state as list:
 		stack.push(finalState.getPredicates());
@@ -53,7 +59,7 @@ public class Strips {
 		}
 
 		while (!stack.isEmpty()) {
-			System.out.println("-----");
+			this.output.println("-----");
 			// Look at element on top of stack:
 			StripsElement currentElement = stack.pop();
 
@@ -109,11 +115,11 @@ public class Strips {
 					// find constant to instantiate the variables and set this
 					// constant in entire stack:
 					instantiate(singlePred, heuristic);
-					System.out.println(" --->\t" + singlePred);
+					this.output.println(" --->\t" + singlePred);
 				}
 			}
 		}
-		System.out.println("-----");
+		this.output.println("-----");
 		return plan;
 
 	}
@@ -175,8 +181,12 @@ public class Strips {
 
 			}
 		}
-		throw new Exception(
+		throw new RuntimeException(
 				"There was no operator found to resolve a predicate. There is no possible plan.");
 	}
 
+	public void setOutput(OutputStream outputStream){
+		output = new PrintStream(outputStream);
+		stack.setOutput(output);
+	}
 }

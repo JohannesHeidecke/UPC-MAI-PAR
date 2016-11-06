@@ -1,17 +1,19 @@
 package problem.coffee;
 
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import problem.coffee.pred.Pmachine;
-import problem.coffee.pred.Ppetition;
-import problem.coffee.pred.Pserved;
-import problem.coffee.pred.args.Coordinate;
-import problem.coffee.pred.args.Location;
 import model.Heuristic;
 import model.Predicate;
 import model.State;
+import problem.coffee.pred.Pmachine;
+import problem.coffee.pred.Ppetition;
+import problem.coffee.pred.ProbotLocation;
+import problem.coffee.pred.Pserved;
+import problem.coffee.pred.args.Location;
 
 public class CoffeeHeuristic extends Heuristic {
 
@@ -20,11 +22,14 @@ public class CoffeeHeuristic extends Heuristic {
 
 	private Ppetition lastPetition;
 
+	private PrintStream output;
+
 	public CoffeeHeuristic(boolean useTravelingSalesmenServed,
 			boolean useClosestMachine) {
 		super();
 		this.useNNforServeds = useTravelingSalesmenServed;
 		this.useClosestMachine = useClosestMachine;
+		output = System.out;
 	}
 
 	@Override
@@ -35,7 +40,7 @@ public class CoffeeHeuristic extends Heuristic {
 			return predicates;
 		}
 
-		System.out.println("HEURISTIC: 'served' ordering");
+		output.println("HEURISTIC: 'served' ordering");
 
 		List<Predicate> result = new ArrayList<>();
 		for (Predicate pred : predicates) {
@@ -46,7 +51,7 @@ public class CoffeeHeuristic extends Heuristic {
 
 		List<Pserved> servedPredicates = new ArrayList<>();
 		for (Predicate pred : predicates) {
-			if (pred.getIdentifier().equals("served")) {
+			if (pred.getIdentifier().equals(Pserved.ID)) {
 				servedPredicates.add((Pserved) pred);
 			}
 		}
@@ -54,7 +59,7 @@ public class CoffeeHeuristic extends Heuristic {
 
 		Location currentPos = null;
 		for (Predicate pred : currentState.getPredicates().toList()) {
-			if (pred.getIdentifier().equals("robotLocation")) {
+			if (pred.getIdentifier().equals(ProbotLocation.ID)) {
 				currentPos = (Location) pred.getArgument(0);
 				break;
 			}
@@ -103,7 +108,7 @@ public class CoffeeHeuristic extends Heuristic {
 		// caluclation:
 		List<Ppetition> petitionsPred = new ArrayList<>();
 		for (Predicate pred : compatiblePredicates) {
-			if (pred.getIdentifier().equals("petition")) {
+			if (pred.getIdentifier().equals(Ppetition.ID)) {
 				petitionsPred.add((Ppetition) pred);
 			}
 		}
@@ -113,16 +118,16 @@ public class CoffeeHeuristic extends Heuristic {
 
 		List<Pmachine> machinePreds = new ArrayList<>();
 		for (Predicate pred : compatiblePredicates) {
-			if (pred.getIdentifier().equals("machine")) {
+			if (pred.getIdentifier().equals(Pmachine.ID)) {
 				machinePreds.add((Pmachine) pred);
 			}
 		}
 
 		if (machinePreds.size() > 0) {
-			System.out.println("HEURISTIC: 'machine' selection");
+			output.println("HEURISTIC: 'machine' selection");
 			Location currentPos = null;
 			for (Predicate pred : currentState.getPredicates().toList()) {
-				if (pred.getIdentifier().equals("robotLocation")) {
+				if (pred.getIdentifier().equals(ProbotLocation.ID)) {
 					currentPos = (Location) pred.getArgument(0);
 					break;
 				}
@@ -133,8 +138,7 @@ public class CoffeeHeuristic extends Heuristic {
 			for (Pmachine pred : machinePreds) {
 				// distance = distance from current position to machine +
 				// distance from machine to last petition
-				int distance = currentPos.distanceTo(pred.getLocation());
-				distance += pred.getLocation().distanceTo(lastPetition.getLocation());
+				int distance = Location.distance(currentPos, pred.getLocation(), lastPetition.getLocation());
 				if (distance < bestDistanceSoFar) {
 					closestMachine = pred;
 					bestDistanceSoFar = distance;
@@ -148,4 +152,7 @@ public class CoffeeHeuristic extends Heuristic {
 		return compatiblePredicates.get(0);
 	}
 
+	public void setOutput(OutputStream outputStream){
+		output = new PrintStream(outputStream);
+	}	
 }

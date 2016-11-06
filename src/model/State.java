@@ -7,6 +7,17 @@ public class State {
 
 	protected ConjunctivePredicate predicates;
 
+	public State() {
+		// shallow copy
+		this.predicates = new ConjunctivePredicate();
+ 	}
+	
+	public State(State state) {
+		this();
+		// shallow copy
+		this.predicates = new ConjunctivePredicate(state.predicates);
+ 	}
+
 	public State(ConjunctivePredicate predicates) {
 		this.predicates = predicates;
  	}

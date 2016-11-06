@@ -34,28 +34,28 @@ public class CoffeeParser extends Parser {
 		// and list of arguments. Return null if predName is not valid
 		// TODO: add error checking for arguments
 		Predicate newPred = null;
-		if (predName.equals("Robot-free")) {
+		if (predName.equals(ProbotFree.ID)) {
 			newPred = new ProbotFree();
 		}
-		if (predName.equals("Robot-location")) {
+		if (predName.equals(ProbotLocation.ID)) {
 			newPred = new ProbotLocation(parseLocation(predArgs[0]));
 		}
-		if (predName.equals("Robot-loaded")) {
+		if (predName.equals(ProbotLoaded.ID)) {
 			int load = Integer.parseInt(predArgs[0]);
 			newPred = new ProbotLoaded(new PositiveInteger(load));
 		}
-		if (predName.equals("Petition")) {
+		if (predName.equals(Ppetition.ID)) {
 			int order = Integer.parseInt(predArgs[1]);
 			newPred = new Ppetition(parseLocation(predArgs[0]), new PositiveInteger(order));								
 		}
-		if (predName.equals("Served")) {
+		if (predName.equals(Pserved.ID)) {
 			newPred = new Pserved(parseLocation(predArgs[0]));						
 		}
-		if (predName.equals("Machine")) {
+		if (predName.equals(Pmachine.ID)) {
 			int capacity = Integer.parseInt(predArgs[1]);
 			newPred = new Pmachine(parseLocation(predArgs[0]), new PositiveInteger(capacity));						
 		}
-		if (predName.equals("Steps")) {
+		if (predName.equals(Psteps.ID)) {
 			int steps = Integer.parseInt(predArgs[0]);
 			newPred = new Psteps(new PositiveInteger(steps));						
 		}
@@ -72,8 +72,8 @@ public class CoffeeParser extends Parser {
 	
 	public static void main(String[] args) {
 
-		String test = "InitialState=Robot-location(o1);Machine(o4,3);Petition(o7,3);" + 
-				  "GoalState=Robot-location(o1);Served(o7,3);"; 
+		String test = "InitialState=" + ProbotLocation.ID + "(o1);" + ProbotLocation.ID + "(o4,3);" + Ppetition.ID + "(o7,3);" 
+				  	+ "GoalState=" + ProbotLocation.ID + "(o1);" + Pserved.ID + "(o7,3);"; 
 
 		// test parser from string
 		{	

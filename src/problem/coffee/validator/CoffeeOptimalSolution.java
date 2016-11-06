@@ -79,7 +79,7 @@ public class CoffeeOptimalSolution {
 	private Location findRobotLocation(State state) {
 		Location currentPos = null;
 		for (Predicate pred : state.getPredicates().toList()) {
-			if (pred.getIdentifier().equals("robotLocation")) {
+			if (pred.getIdentifier().equals(ProbotLocation.ID)) {
 				currentPos = ((ProbotLocation) pred).getLocation();
 				break;
 			}
@@ -91,7 +91,7 @@ public class CoffeeOptimalSolution {
 	private List<Pmachine> getMachines(State state) {
 		List<Pmachine> machines = new ArrayList<Pmachine>();
 		for (Predicate pred : state.getPredicates().toList()) {
-			if (pred.getIdentifier().equals("machine")) {
+			if (pred.getIdentifier().equals(Pmachine.ID)) {
 				machines.add((Pmachine) pred);
 			}
 		}
@@ -102,7 +102,7 @@ public class CoffeeOptimalSolution {
 	private List<Ppetition> getPetitions(State state) {
 		List<Ppetition> petitionPredicates = new ArrayList<>();
 		for (Predicate pred : state.getPredicates().toList()) {
-			if (pred.getIdentifier().equals("petition")) {
+			if (pred.getIdentifier().equals(Ppetition.ID)) {
 				petitionPredicates.add((Ppetition) pred);
 			}
 		}
@@ -154,7 +154,7 @@ public class CoffeeOptimalSolution {
 		for (Ppetition currentPetition : petitionPermutation) {
 			// compute steps from current location to the best machine and from the machine to the petition office
 			Pmachine currentBestMachine = findBestMachine(currentPos, currentPetition);
-			steps += getDistance(currentPos, currentBestMachine.getLocation(), currentPetition.getLocation());
+			steps += Location.distance(currentPos, currentBestMachine.getLocation(), currentPetition.getLocation());
 			currentPos = currentPetition.getLocation();
 		}
 		// the robot could stop at the last office
@@ -174,7 +174,7 @@ public class CoffeeOptimalSolution {
 			// compatible machine
 			if (machine.getN().equals(petition.getN())) {
 				// keep track of the closest machine
-				int distance = getDistance(currentPos, machine.getLocation(), petition.getLocation());
+				int distance = Location.distance(currentPos, machine.getLocation(), petition.getLocation());
 				if (distance < bestDistanceSoFar) {
 					bestMachine = machine;
 					bestDistanceSoFar = distance;
@@ -183,12 +183,6 @@ public class CoffeeOptimalSolution {
 		}
 
 		return bestMachine;
-	}
-
-	private Integer getDistance(Location initialPos, Location middlePos, Location finalPos)
-	{
-		// number of steps from initial to middle and from middle to final
-		return initialPos.distanceTo(middlePos) + middlePos.distanceTo(finalPos);
 	}
 	
 	public static void main(String[] args) throws IOException {
@@ -204,6 +198,5 @@ public class CoffeeOptimalSolution {
 		
 		CoffeeOptimalSolution solver = new CoffeeOptimalSolution(initialState, finalState);
 		System.out.println("Optimal number of steps: " + solver.getNumberOfSteps());
-		System.out.println("Optimal path: " + solver.getPath());
 	}
 }

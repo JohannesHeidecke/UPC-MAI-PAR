@@ -1,13 +1,11 @@
 package problem.coffee;
 
-import model.ConjunctivePredicate;
 import model.Predicate;
 import model.State;
 import problem.coffee.pred.Pmachine;
 import problem.coffee.pred.Ppetition;
 import problem.coffee.pred.ProbotFree;
 import problem.coffee.pred.ProbotLocation;
-import problem.coffee.pred.Pserved;
 import problem.coffee.pred.Psteps;
 import problem.coffee.pred.args.Coordinate;
 import problem.coffee.pred.args.Location;
@@ -18,9 +16,7 @@ public class InitialState extends State {
 	// TODO: delete?
 
 	public InitialState() {
-		super(null);
-		
-		ConjunctivePredicate predicates = new ConjunctivePredicate();
+		super();
 
 		Predicate robotLocation = new ProbotLocation(new Location(new Coordinate(1, 1)));
 		Predicate robotFree = new ProbotFree();
@@ -58,9 +54,7 @@ public class InitialState extends State {
 		predicates.add(petition3);
 		predicates.add(petition4);
 		predicates.add(petition5);
-		predicates.add(steps);
-		
-		this.predicates = predicates;
+		predicates.add(steps);	
 	}
 
 }

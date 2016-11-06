@@ -26,8 +26,7 @@ public class Solve {
 		if(args.length > 0) {
 			filePath = args[0];
 		} else {
-			filePath = "./data/generated/example1";
-//			filePath = "./data/test0";
+			filePath = "./data/examples/test0";
 		}
 		
 		File testFile = new File(filePath);
@@ -53,7 +52,6 @@ public class Solve {
 		Heuristic heuristic = new CoffeeHeuristic(true, true);
 		double startTime = System.currentTimeMillis();
 		try {
-
 			plan = planner.calculatePlan(heuristic);
 		} catch (Exception e) {
 			e.printStackTrace();
