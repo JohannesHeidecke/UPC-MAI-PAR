@@ -127,7 +127,7 @@ public class Strips {
 
 		List<Predicate> compatiblePredicates = new ArrayList<>();
 		for (Predicate currPred : this.currentState.getPredicates().toList()) {
-			// find a compatible predicate in current state:
+			// find all compatible predicates in current state:
 			if (currPred.isCompatibleTo(singlePred)) {
 				compatiblePredicates.add(currPred);
 			}
@@ -142,7 +142,7 @@ public class Strips {
 		Predicate chosenPred = heuristic.choosePredicateForInstantiation(
 				compatiblePredicates, currentState);
 
-		// instantiate with constants in predicate found in chosenPred
+		// instantiate with singlePred with constants of chosenPred
 		for (int i = 0; i < chosenPred.getValence(); i++) {
 			if (!singlePred.getArgument(i).isInstantiated()) {
 				// instantiate updates the java object of the variable.
@@ -152,7 +152,6 @@ public class Strips {
 						chosenPred.getArgument(i).getValue());
 			}
 		}
-		return;
 
 	}
 

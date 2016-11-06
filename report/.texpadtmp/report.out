@@ -6,9 +6,13 @@
 \BOOKMARK [2][-]{subsection.2.4}{Search Space}{section.2}% 6
 \BOOKMARK [2][-]{subsection.2.5}{Special Cases}{section.2}% 7
 \BOOKMARK [1][-]{section.3}{Planning Algorithm}{}% 8
-\BOOKMARK [1][-]{section.4}{Implementation}{}% 9
-\BOOKMARK [1][-]{section.5}{Tests}{}% 10
-\BOOKMARK [1][-]{section.6}{Results}{}% 11
-\BOOKMARK [1][-]{section*.1}{Appendices}{}% 12
-\BOOKMARK [1][-]{Appendix.1.A}{Included Files}{}% 13
-\BOOKMARK [1][-]{Appendix.1.B}{Eclipse Instructions}{}% 14
+\BOOKMARK [2][-]{subsection.3.1}{STRIPS Algorithm}{section.3}% 9
+\BOOKMARK [2][-]{subsection.3.2}{Heuristics}{section.3}% 10
+\BOOKMARK [1][-]{section.4}{Implementation}{}% 11
+\BOOKMARK [2][-]{subsection.4.1}{Class structure}{section.4}% 12
+\BOOKMARK [2][-]{subsection.4.2}{Implementation details}{section.4}% 13
+\BOOKMARK [1][-]{section.5}{Tests}{}% 14
+\BOOKMARK [1][-]{section.6}{Results}{}% 15
+\BOOKMARK [1][-]{section*.2}{Appendices}{}% 16
+\BOOKMARK [1][-]{Appendix.1.A}{Included Files}{}% 17
+\BOOKMARK [1][-]{Appendix.1.B}{Eclipse Instructions}{}% 18

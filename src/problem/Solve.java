@@ -9,7 +9,7 @@ import model.Heuristic;
 import model.Operator;
 import model.Plan;
 import model.State;
-import planner.LinearPlanner;
+import planner.Strips;
 import problem.coffee.CoffeeHeuristic;
 import problem.coffee.operators.OServe;
 import problem.coffee.operators.Omake;
@@ -47,7 +47,7 @@ public class Solve {
 		operators.add(new Omove());
 		operators.add(new OServe());
 
-		LinearPlanner planner = new LinearPlanner(initialState, finalState,
+		Strips planner = new Strips(initialState, finalState,
 				operators);
 		Plan plan = null;
 		Heuristic heuristic = new CoffeeHeuristic(true, true);

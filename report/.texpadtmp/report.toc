@@ -6,9 +6,13 @@
 \contentsline {subsection}{\numberline {2.4}Search Space}{4}{subsection.2.4}
 \contentsline {subsection}{\numberline {2.5}Special Cases}{5}{subsection.2.5}
 \contentsline {section}{\numberline {3}Planning Algorithm}{5}{section.3}
+\contentsline {subsection}{\numberline {3.1}STRIPS Algorithm}{5}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Heuristics}{5}{subsection.3.2}
 \contentsline {section}{\numberline {4}Implementation}{5}{section.4}
-\contentsline {section}{\numberline {5}Tests}{5}{section.5}
-\contentsline {section}{\numberline {6}Results}{5}{section.6}
-\contentsline {section}{Appendices}{6}{section*.1}
-\contentsline {section}{\numberline {A}Included Files}{6}{Appendix.1.A}
-\contentsline {section}{\numberline {B}Eclipse Instructions}{6}{Appendix.1.B}
+\contentsline {subsection}{\numberline {4.1}Class structure}{5}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Implementation details}{6}{subsection.4.2}
+\contentsline {section}{\numberline {5}Tests}{6}{section.5}
+\contentsline {section}{\numberline {6}Results}{6}{section.6}
+\contentsline {section}{Appendices}{7}{section*.2}
+\contentsline {section}{\numberline {A}Included Files}{7}{Appendix.1.A}
+\contentsline {section}{\numberline {B}Eclipse Instructions}{7}{Appendix.1.B}
