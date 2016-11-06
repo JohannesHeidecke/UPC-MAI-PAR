@@ -23,12 +23,24 @@ Objects of \texttt{ConjunctivePredicate} represent a list of single \texttt{Pred
 
 The \texttt{Operator} class represents operators in the STRIPS algorithm with their lists of preconditions and the postconditions split up in both a \texttt{ConjunctivePredicate} \textit{add} and \textit{delete}.
 
+\begin{figure}[hbt]
+  \includegraphics[width=1.1\textwidth]{uml/CD2}
+  \caption{UML Class Diagram of Predicates and }
+  \label{fig:uml1}
+\end{figure}
+
 
 \subsection{Problem Implementation}
 
 It should be noted that none of the classes introduced in the previous subsection \ref{sub:genstruct} are implementations of a specific domain dependent problem - they are a general representation of the STRIPS algorithm that works for a large set of problems.
 
-% TODO: implementation of coffee problem
+The class \texttt{CoffeeHeuristic} is a realization of its abstract super-class \texttt{Heuristic}. It implements the heuristics described in the previous section.
+
+The package \texttt{problem.coffee.pred} contains implementations of the problem's different predicates which are all subclasses of \texttt{Predicate}. The data types of the arguments are implemented in \texttt{problem.coffee.pred.args} and are subclasses of \texttt{Variable}.
+
+The three operators are implemented in the package \texttt{problem.coffee.operators} and are subclasses of \texttt{Operator}.
+
+The class \texttt{problem.Solve} creates a \texttt{Strips} object and uses it to compute a solution for a specific coffee problem, read from a file.
 
 \subsection{Heuristic Details}
 
