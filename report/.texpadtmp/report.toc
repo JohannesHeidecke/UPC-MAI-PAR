@@ -1,6 +1,5 @@
 \contentsline {section}{\numberline {1}Introduction}{3}{section.1}
 \contentsline {subsection}{\numberline {1.1}Problem Description}{3}{subsection.1.1}
-\contentsline {subsection}{\numberline {1.2}Report Overview}{3}{subsection.1.2}
 \contentsline {section}{\numberline {2}Problem Analysis}{3}{section.2}
 \contentsline {subsection}{\numberline {2.1}Predicates}{3}{subsection.2.1}
 \contentsline {subsection}{\numberline {2.2}Intitial and Goal States}{4}{subsection.2.2}
@@ -21,8 +20,8 @@
 \contentsline {subsection}{\numberline {5.2}Automatically created worlds}{14}{subsection.5.2}
 \contentsline {section}{\numberline {6}Results}{14}{section.6}
 \contentsline {subsection}{\numberline {6.1}Manually Created Worlds}{14}{subsection.6.1}
-\contentsline {subsection}{\numberline {6.2}Automatically created worlds}{14}{subsection.6.2}
-\contentsline {section}{\numberline {7}Outlook}{16}{section.7}
-\contentsline {section}{Appendices}{19}{section*.14}
-\contentsline {section}{\numberline {A}Included Files}{19}{Appendix.1.A}
-\contentsline {section}{\numberline {B}Eclipse Instructions}{19}{Appendix.1.B}
+\contentsline {subsection}{\numberline {6.2}Automatically created worlds}{15}{subsection.6.2}
+\contentsline {section}{\numberline {7}Outlook}{19}{section.7}
+\contentsline {section}{Appendices}{20}{section*.14}
+\contentsline {section}{\numberline {A}Included Files}{20}{Appendix.1.A}
+\contentsline {section}{\numberline {B}Eclipse Instructions}{20}{Appendix.1.B}
