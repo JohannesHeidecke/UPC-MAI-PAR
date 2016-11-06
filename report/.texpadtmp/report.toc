@@ -18,11 +18,11 @@
 \contentsline {subsection}{\numberline {4.3}Heuristic Details}{11}{subsection.4.3}
 \contentsline {section}{\numberline {5}Tests}{13}{section.5}
 \contentsline {subsection}{\numberline {5.1}Manually Created Worlds}{13}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}Automatically created worlds}{13}{subsection.5.2}
-\contentsline {section}{\numberline {6}Results}{13}{section.6}
-\contentsline {subsection}{\numberline {6.1}Manually Created Worlds}{13}{subsection.6.1}
-\contentsline {subsection}{\numberline {6.2}Automatically created worlds}{13}{subsection.6.2}
+\contentsline {subsection}{\numberline {5.2}Automatically created worlds}{14}{subsection.5.2}
+\contentsline {section}{\numberline {6}Results}{14}{section.6}
+\contentsline {subsection}{\numberline {6.1}Manually Created Worlds}{14}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Automatically created worlds}{14}{subsection.6.2}
 \contentsline {section}{\numberline {7}Outlook}{16}{section.7}
-\contentsline {section}{Appendices}{18}{section*.12}
-\contentsline {section}{\numberline {A}Included Files}{18}{Appendix.1.A}
-\contentsline {section}{\numberline {B}Eclipse Instructions}{18}{Appendix.1.B}
+\contentsline {section}{Appendices}{19}{section*.13}
+\contentsline {section}{\numberline {A}Included Files}{19}{Appendix.1.A}
+\contentsline {section}{\numberline {B}Eclipse Instructions}{19}{Appendix.1.B}

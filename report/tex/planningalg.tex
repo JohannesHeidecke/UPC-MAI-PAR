@@ -64,7 +64,7 @@ In our specific implementation of the STRIPS algorithm to solve the coffee probl
 
 The Served-Heuristics determines in which order the robot processes the different petitions to serve the coffee. If the petitions are processed in a random order or simply based on their position in the description of the world, the robot is likely to make a lot of unnecessary steps. The optimal solution here belongs to the class of the Traveling Salesman Problem and is too complex to exactly compute for a large number of petitions.
 
-In our implementation we resorted to the nearest-neighbor heuristic (NN-heuristic) to get a good solution for this problem with relatively little computational effort. The steps of this algorithm are the following:
+Computing all possible paths along the petitions in a brute-force way requires $O(2^{|P|})$ steps, which is unfeasible for large numbers of petitions $P$. In our implementation we resorted to the nearest-neighbor heuristic (NN-heuristic) to get a good solution for this problem with relatively little computational effort. The steps of this algorithm are the following:
 
 \begin{enumerate}
 	\item Start at the beginning position of the robot.
@@ -75,7 +75,7 @@ In our implementation we resorted to the nearest-neighbor heuristic (NN-heuristi
 	\item Go to step 2.
 \end{enumerate} 
 
-The difference between visiting petitions in their order (from $P_1$ to $P_4$) or choosing a path based on the NN-heuristic can be seen in figure \ref{fig:1}. While the the path based on the petition number requires 21 steps, the NN-heuristic only requires 17 steps. Empirical results of the NN-heuristic can be found in section \ref{sec:results}.
+The difference between visiting petitions in their order (from $P_1$ to $P_4$) or choosing a path based on the NN-heuristic can be seen in figure \ref{fig:1}. While the path based on the petition number requires 21 steps, the NN-heuristic only requires 17 steps. Empirical results of the NN-heuristic can be found in section \ref{sec:results}.
 
 \begin{figure}[!ht]
 \centering     %%% not \center

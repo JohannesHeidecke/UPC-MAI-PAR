@@ -19,15 +19,10 @@ The stack provided by \texttt{StripsStack} can be filled with objects of the cla
 
 \texttt{Predicate} objects have an unique \textit{identifier} and a list of \texttt{Variable} objects that represent the arguments of the predicate. \texttt{Variable} objects can take another \texttt{Object} as their \textit{value} or have a \textit{value} of \texttt{null} if the argument is not instantiated. 
 
+
 Objects of \texttt{ConjunctivePredicate} represent a list of single \texttt{Predicate} objects. They are used in other classes such as \texttt{State} or \texttt{Operator} to handle conjunction lists of predicates.
 
 The \texttt{Operator} class represents operators in the STRIPS algorithm with their lists of preconditions and the postconditions split up in both a \texttt{ConjunctivePredicate} \textit{add} and \textit{delete}.
-
-\begin{figure}[hbt]
-  \includegraphics[width=1.1\textwidth]{uml/CD2}
-  \caption{UML Class Diagram of Predicates and }
-  \label{fig:uml1}
-\end{figure}
 
 
 \subsection{Problem Implementation}
@@ -36,9 +31,21 @@ It should be noted that none of the classes introduced in the previous subsectio
 
 The class \texttt{CoffeeHeuristic} is a realization of its abstract super-class \texttt{Heuristic}. It implements the heuristics described in the previous section.
 
-The package \texttt{problem.coffee.pred} contains implementations of the problem's different predicates which are all subclasses of \texttt{Predicate}. The data types of the arguments are implemented in \texttt{problem.coffee.pred.args} and are subclasses of \texttt{Variable}.
+The package \texttt{problem.coffee.pred} contains implementations of the problem's different predicates which are all subclasses of \texttt{Predicate}. The data types of the arguments are implemented in \texttt{problem.coffee.pred.args} and are subclasses of \texttt{Variable}. The class diagram of predicates and variables for the coffee problem can be seen in figure \ref{fig:uml2}.
 
-The three operators are implemented in the package \texttt{problem.coffee.operators} and are subclasses of \texttt{Operator}.
+\begin{figure}[!hbt]
+  \includegraphics[width=1.1\textwidth]{uml/CD2}
+  \caption{UML Class Diagram of Predicates and Variables}
+  \label{fig:uml2}
+\end{figure}
+
+The three operators are implemented in the package \texttt{problem.coffee.operators} and are subclasses of \texttt{Operator}. Operators and the \texttt{CoffeeHeuristic} class are shown in the UML diagram of figure \ref{fig:uml3}.
+
+\begin{figure}[!hbt]
+  \includegraphics[width=1.1\textwidth]{uml/CD3}
+  \caption{UML Class Diagram of Heuristic and Operators}
+  \label{fig:uml3}
+\end{figure}
 
 The class \texttt{problem.Solve} creates a \texttt{Strips} object and uses it to compute a solution for a specific coffee problem, read from a file.
 
