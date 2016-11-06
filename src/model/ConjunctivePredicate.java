@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class ConjunctivePredicate extends STRIPElement {
+public class ConjunctivePredicate extends StripsElement {
 
 	// The predicates that are part of the conjunction:
 	private List<Predicate> predicates;

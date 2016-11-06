@@ -7,18 +7,18 @@ import model.ConjunctivePredicate;
 import model.Heuristic;
 import model.Operator;
 import model.Plan;
-import model.STRIPElement;
+import model.StripsElement;
 import model.Predicate;
 import model.State;
 import model.Variable;
 
-public class LinearPlanner {
+public class Strips {
 
 	private List<Operator> operators;
 	private State initialState, finalState, currentState;
-	private LinearPlannerStack stack;
+	private StripsStack stack;
 
-	public LinearPlanner(State initialState, State finalState,
+	public Strips(State initialState, State finalState,
 			List<Operator> operators) {
 
 		this.initialState = initialState;
@@ -26,7 +26,7 @@ public class LinearPlanner {
 		this.finalState = finalState;
 		this.operators = operators;
 
-		stack = new LinearPlannerStack();
+		stack = new StripsStack();
 
 	}
 
@@ -55,7 +55,7 @@ public class LinearPlanner {
 		while (!stack.isEmpty()) {
 			System.out.println("-----");
 			// Look at element on top of stack:
-			STRIPElement currentElement = stack.pop();
+			StripsElement currentElement = stack.pop();
 
 			if (currentElement instanceof Operator) {
 				// If element is an operator:

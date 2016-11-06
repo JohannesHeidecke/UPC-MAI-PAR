@@ -1,6 +1,6 @@
 package model;
 
-public abstract class Operator extends STRIPElement {
+public abstract class Operator extends StripsElement {
 	
 	protected ConjunctivePredicate preconditions;
 	protected ConjunctivePredicate add;
