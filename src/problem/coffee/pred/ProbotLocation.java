@@ -9,8 +9,10 @@ import problem.coffee.pred.args.Location;
 
 public class ProbotLocation extends Predicate {
 
+	public final static String ID = "Robot-location";
+	
 	public ProbotLocation(Location o) {
-		super("robotLocation", new ArrayList<Variable>(Arrays.asList(o)));
+		super(ID, new ArrayList<Variable>(Arrays.asList(o)));
 	}
 
 	public Location getLocation() {

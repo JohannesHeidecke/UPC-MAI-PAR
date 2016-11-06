@@ -26,8 +26,7 @@ public class Solve {
 		if(args.length > 0) {
 			filePath = args[0];
 		} else {
-			filePath = "./data/generated/example1";
-//			filePath = "./data/test0";
+			filePath = "./data/examples/test0";
 		}
 		
 		File testFile = new File(filePath);
@@ -47,13 +46,11 @@ public class Solve {
 		operators.add(new Omove());
 		operators.add(new OServe());
 
-		LinearPlanner planner = new LinearPlanner(initialState, finalState,
-				operators);
+		LinearPlanner planner = new LinearPlanner(initialState, finalState, operators);
 		Plan plan = null;
 		Heuristic heuristic = new CoffeeHeuristic(true, true);
 		double startTime = System.currentTimeMillis();
 		try {
-
 			plan = planner.calculatePlan(heuristic);
 		} catch (Exception e) {
 			e.printStackTrace();

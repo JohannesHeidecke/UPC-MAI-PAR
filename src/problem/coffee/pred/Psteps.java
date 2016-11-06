@@ -9,8 +9,10 @@ import problem.coffee.pred.args.PositiveInteger;
 
 public class Psteps extends Predicate {
 	
+	public final static String ID = "Steps";
+	
 	public Psteps(PositiveInteger x) {
-		super("steps", new ArrayList<Variable>(Arrays.asList(x)));
+		super(ID, new ArrayList<Variable>(Arrays.asList(x)));
 	}
 
 }

@@ -10,8 +10,10 @@ import problem.coffee.pred.args.PositiveInteger;
 
 public class Pmachine extends Predicate {
 	
+	public final static String ID = "Machine";
+	
 	public Pmachine(Location o, PositiveInteger n) {
-		super("machine", new ArrayList<Variable>(Arrays.asList(o, n)));
+		super(ID, new ArrayList<Variable>(Arrays.asList(o, n)));
 	}
 	
 	public Location getLocation() {

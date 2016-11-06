@@ -56,6 +56,7 @@ public class Omove extends Operator {
 		return "Move from "+o1.toString()+" to "+o2.toString()+". Total steps: "+xNew.toString();
 	}
 	
-	
-
+	public Integer getStepsSoFar() {
+		return xNew.getIntValue();
+	}
 }

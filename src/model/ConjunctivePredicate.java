@@ -10,9 +10,16 @@ public class ConjunctivePredicate extends STRIPElement {
 	private List<Predicate> predicates;
 
 	public ConjunctivePredicate() {
+		super();
 		predicates = new ArrayList<>();
 	}
 
+	public ConjunctivePredicate(ConjunctivePredicate conjuction) {
+		// shallow copy
+		this();
+		predicates.addAll(conjuction.predicates);
+	}
+	
 	public List<Predicate> toList() {
 		return this.predicates;
 	}

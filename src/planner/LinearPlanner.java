@@ -1,5 +1,7 @@
 package planner;
 
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,35 +9,38 @@ import model.ConjunctivePredicate;
 import model.Heuristic;
 import model.Operator;
 import model.Plan;
-import model.STRIPElement;
 import model.Predicate;
+import model.STRIPElement;
 import model.State;
-import model.Variable;
 
 public class LinearPlanner {
 
 	private List<Operator> operators;
 	private State initialState, finalState, currentState;
 	private LinearPlannerStack stack;
-
+	private PrintStream output;
+	
 	public LinearPlanner(State initialState, State finalState,
-			List<Operator> operators) {
+						 List<Operator> operators) {
 
 		this.initialState = initialState;
-		this.currentState = initialState;
 		this.finalState = finalState;
+		// currentState is initialized each time a plan is calculated
+		this.currentState = null;
 		this.operators = operators;
-
 		stack = new LinearPlannerStack();
 
+		setOutput(System.out);
 	}
-
+	
 	public Plan calculatePlan(Heuristic heuristic) throws Exception {
 
 		// Calculate plan according to STRIP algorithm (linear planner with goal
 		// stack):
-
+		// initialize each time a plan is calculated
+		this.currentState = new State(this.initialState);
 		Plan plan = new Plan();
+		plan.setOutput(output);
 
 		// Push goal predicates from final state as list:
 		stack.push(finalState.getPredicates());
@@ -53,7 +58,7 @@ public class LinearPlanner {
 		}
 
 		while (!stack.isEmpty()) {
-			System.out.println("-----");
+			this.output.println("-----");
 			// Look at element on top of stack:
 			STRIPElement currentElement = stack.pop();
 
@@ -109,11 +114,11 @@ public class LinearPlanner {
 					// find constant to instantiate the variables and set this
 					// constant in entire stack:
 					instantiate(singlePred, heuristic);
-					System.out.println(" --->\t" + singlePred);
+					this.output.println(" --->\t" + singlePred);
 				}
 			}
 		}
-		System.out.println("-----");
+		this.output.println("-----");
 		return plan;
 
 	}
@@ -176,8 +181,12 @@ public class LinearPlanner {
 
 			}
 		}
-		throw new Exception(
+		throw new RuntimeException(
 				"There was no operator found to resolve a predicate. There is no possible plan.");
 	}
 
+	public void setOutput(OutputStream outputStream){
+		output = new PrintStream(outputStream);
+		stack.setOutput(output);
+	}
 }

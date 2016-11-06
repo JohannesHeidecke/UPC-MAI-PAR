@@ -1,21 +1,25 @@
 package planner;
 
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.Stack;
 
 import model.STRIPElement;
 
 public class LinearPlannerStack {
 	
-	Stack<STRIPElement> stack;
+	private Stack<STRIPElement> stack;
+	private PrintStream output;
 	
 	public LinearPlannerStack() {
 		this.stack = new Stack<>();
+		this.output = System.out;
 	}
 	
 	
 	public void push(STRIPElement el) {
 		this.stack.push(el);
-		System.out.println("PUSH: \t" +el.toString());
+		output.println("PUSH: \t" +el.toString());
 	}
 
 	public boolean isEmpty() {
@@ -24,8 +28,11 @@ public class LinearPlannerStack {
 
 	public STRIPElement pop() {
 		STRIPElement currentElement = this.stack.pop();
-		System.out.println(" POP: \t" +currentElement.toString());
+		output.println(" POP: \t" +currentElement.toString());
 		return currentElement;
 	}
 	
+	public void setOutput(OutputStream outputStream){
+		output = new PrintStream(outputStream);
+	}
 }

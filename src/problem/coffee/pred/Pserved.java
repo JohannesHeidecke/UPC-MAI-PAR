@@ -9,8 +9,10 @@ import problem.coffee.pred.args.Location;
 
 public class Pserved extends Predicate {
 	
+	public final static String ID = "Served";
+	
 	public Pserved(Location o) {
-		super("served", new ArrayList<Variable>(Arrays.asList(o)));
+		super(ID, new ArrayList<Variable>(Arrays.asList(o)));
 	}
 	
 	public Location getLocation() {

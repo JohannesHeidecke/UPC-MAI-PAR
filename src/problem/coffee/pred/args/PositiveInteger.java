@@ -8,7 +8,7 @@ public class PositiveInteger extends Variable {
 		super(value);
 	}
 	
-	public int getIntValue() {
+	public Integer getIntValue() {
 		return (Integer) this.getValue();
 	}
 
