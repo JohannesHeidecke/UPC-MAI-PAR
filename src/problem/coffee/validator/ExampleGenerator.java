@@ -1,14 +1,14 @@
 package problem.coffee.validator;
 
-import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
-import java.io.Writer;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 import problem.coffee.helpers.Helper;
@@ -135,29 +135,50 @@ public class ExampleGenerator {
 					output.println("|");
 				}
 
-				// convert to text file:
-				String out = "InitialState="+ProbotLocation.ID+"(o1);"+ProbotFree.ID+";"+Psteps.ID+"(0);";
-				String servedOut = "";
+				List<String> machines = new ArrayList<>();
+				List<String> petitions = new ArrayList<>();
+				List<String> serveds = new ArrayList<>();
+				
 				for (int i = 0; i < values.length; i++) {
 					for (int j = 0; j < values[0].length; j++) {
 						if (values[i][j] != null) {
+							String office = "o" + Helper.coordToNumb(i + 1, j + 1, sizeY);
 							if (values[i][j].charAt(0) == 'm') {
-								out += Pmachine.ID+"(o";
+								String machine = Pmachine.ID +"(" + office + "," + values[i][j].charAt(1) + ");";
+								machines.add(machine);
 							} else {
-								out += Ppetition.ID+"(o";
-								servedOut += Pserved.ID+"(o"
-										+ Helper.coordToNumb(i + 1, j + 1, sizeY) + ");";
+								String petition = Ppetition.ID +"(" + office + "," + values[i][j].charAt(1) + ");";
+								petitions.add(petition);
+								String served = Pserved.ID +"(" + office + ");";
+								serveds.add(served);
 							}
-							out += Helper.coordToNumb(i + 1, j + 1, sizeY);
-							out += "," + values[i][j].charAt(1) + ");";
 						}
 					}
 				}
 				
-				out += "GoalState="+ProbotLocation.ID+"(o"+Helper.coordToNumb(2, 1, sizeY)+");";
-				out += servedOut;
+				// shuffle lists
+				Random random = new Random(System.nanoTime());
+				Collections.shuffle(machines, random);
+				Collections.shuffle(petitions, random);
+				Collections.shuffle(serveds, random);
 
-				return out;
+				// convert to text file:
+				StringBuilder outBuilder = new StringBuilder();
+				outBuilder.append("InitialState="+ProbotLocation.ID+"(o1);"+ProbotFree.ID+";"+Psteps.ID+"(0);");
+
+				for(String s : machines) {
+				    outBuilder.append(s);
+				}
+				for(String s : petitions) {
+				    outBuilder.append(s);
+				}				
+				
+				outBuilder.append("GoalState="+ProbotLocation.ID+"(o"+Helper.coordToNumb(2, 1, sizeY)+");");
+				for(String s : serveds) {
+				    outBuilder.append(s);
+				}
+
+				return outBuilder.toString();
 	}
 	
 	public void setOutput(OutputStream outputStream){
@@ -166,10 +187,6 @@ public class ExampleGenerator {
 	
 	public static void main(String[] args) throws UnsupportedEncodingException, FileNotFoundException, IOException {
 		
-		try (Writer writer = new BufferedWriter(new OutputStreamWriter(
-	              new FileOutputStream("./data/generated/example1"), "utf-8"))) {
-			writer.write(new ExampleGenerator().generate());
-		}
+		System.out.println(new ExampleGenerator().generate());
 	}
-
 }
