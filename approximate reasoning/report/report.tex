@@ -1,0 +1,57 @@
+\documentclass[12pt,a4paper]{report}
+
+\usepackage[pdftex]{graphicx} %for embedding images
+
+\usepackage{url} %for proper url entries
+
+\usepackage{booktabs}
+\usepackage{listings}
+\usepackage{subfig}
+\usepackage[mathscr]{euscript}
+\usepackage{amsmath}
+\bibliographystyle{unsrt}
+\usepackage{listings}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{titlesec, blindtext, color}
+\usepackage{ctable}
+\usepackage[T1]{fontenc}
+\usepackage{natbib}
+\usepackage{float}
+
+\usepackage[left=30mm,right=30mm,top=20mm,bottom=30mm]{geometry}
+
+\definecolor{gray75}{gray}{0.75}
+
+\newcommand{\hsp}{\hspace{20pt}}
+
+\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp\textcolor{gray75}{|}\hsp}{0pt}{\Huge\bfseries}
+
+\begin{document}
+%\renewcommand\bibname{References} %Renames "Bibliography" to "References" on ref page
+\title{IDSS_FINAL}
+%include other pages
+\input{tex/title}
+
+
+\pagenumbering{Roman}
+\tableofcontents
+\listoffigures
+\listoftables
+
+\newpage
+\pagenumbering{arabic} %reset numbering to normal for the main content
+
+
+\input{tex/introduction}
+
+\addcontentsline{toc}{chapter}{References}
+\bibliography{ref/references} % References file
+
+\newgeometry{left=30mm,right=30mm,top=15mm,bottom=20mm}
+\appendix
+\clearpage
+\input{tex/appendix} % appendix 
+
+\newgeometry{left=30mm,right=30mm,top=20mm,bottom=30mm}
+
+\end{document}
