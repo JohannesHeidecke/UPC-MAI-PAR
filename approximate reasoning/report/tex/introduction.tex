@@ -1,5 +1,3 @@
-\chapter{Introduction}
-
 \chapter{Fuzzy Variables}
 
 \section{Input Variables}
@@ -36,7 +34,7 @@ As we can see graphically in figure \ref{fig:daysPerWeek}, the membership functi
 
 \subsection{minutesPerDay}
 
-The \texttt{minutesPerDay} variable describes the activeness of the user measured in minutes per day on a scale from 0 to 180 with four linguistic labels: 'negligible', 'short', 'right',  and 'large'. The respective membership functions are trapezoidal, their parameters can be seen in table \ref{tab:minutesPerDay}:
+The \texttt{minutesPerDay} variable describes the activeness of the user, measured in minutes per day on a scale from 0 to 180 with four linguistic labels: 'negligible', 'short', 'right',  and 'large'. The respective membership functions are trapezoidal, their parameters can be seen in table \ref{tab:minutesPerDay}:
 
 \begin{table}[H]
 \centering
@@ -507,7 +505,7 @@ The 'motivated veteran' has played the game for a long time and while he is stil
 \label{tab:prof2}
 \end{table}
 
-The 'skeptical beginner' is also fairly new to the game and is not yet convinced to spend a lot of time on playing it. His input variables can be seen in table \ref{tab:prof3}}
+The 'skeptical beginner' is also fairly new to the game and is not yet convinced to spend a lot of time on playing it. His input variables can be seen in table \ref{tab:prof3}
 
 \begin{table}[H]
 \centering
@@ -527,3 +525,150 @@ The 'skeptical beginner' is also fairly new to the game and is not yet convinced
 
 \subsection{Results for output variables}
 \label{sub:autoRes}
+
+
+For the profile 1, 'enthusiastic beginner', figure \ref{fig:p1mpd} shows the activations of the \texttt{minutesPerDay} labels. The player is considered to be mostly active with the 'large' label and to a third also to the 'right' label.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{img/profile1_vMinutesPerDay}
+\caption{\texttt{minutesPerDay} for profile 1}
+\label{fig:p1mpd} 
+\end{figure}
+
+Figure \ref{fig:p1ad} shows the area activated for the \texttt{addictionDegree} and the corresponding defuzzyfied center of areas value of $65.918$. The player's addiction level is still considered to be normal, but towards the upper spectrum of normal.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{img/profile1_vAddictionDegree}
+\caption{\texttt{addictionDegree} for profile 1}
+\label{fig:p1ad} 
+\end{figure}
+
+Figure \ref{fig:p1wm} shows the calculated waiting time the system came up with. With $33.51$ minutes the player has to wait for a time that is perceived as lower-medium.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{img/profile1_vWaitingMinutes}
+\caption{\texttt{waitingMinutes} for profile 1}
+\label{fig:p1wm} 
+\end{figure}
+
+Figure \ref{fig:prof1} shows an overivew of all input and output variables for the 'enthusiastic beginner'.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{img/profile1}
+\caption{Output variables for profile 1}
+\label{fig:prof1} 
+\end{figure}
+
+In figure \ref{fig:p2mpd} we show the activations of \texttt{minutesPerDay} for the player with profile 2: 'motivated veteran'. The player is considered to play just a 'right' amount of minutes per day, with a 40\% membership degree to the 'short' label. This shows that the player is still playing enough, but is threatening to become more inactive.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{img/profile2_vMinutesPerDay}
+\caption{\texttt{minutesPerDay} for profile 2}
+\label{fig:p2mpd} 
+\end{figure}
+
+The addiction degree of the second player is perfectly normal as can be seen in figure \ref{fig:p2ad}. All activated rules label the player with having a normal degree of addiction.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{img/profile2_vAddictionDegree}
+\caption{\texttt{addictionDegree} for profile 2}
+\label{fig:p2ad} 
+\end{figure}
+
+Figure \ref{fig:p2wm} shows that the system assigns a rather high waiting time to the player. His high level and points lead to the system considering a 'almostForever' waiting time, which moves the center of areas to 83.34 minutes.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{img/profile2_vWaitingMinutes}
+\caption{\texttt{waitingMinutes} for profile 2}
+\label{fig:p2wm} 
+\end{figure}
+
+In figure \ref{fig:prof2} we see an overview of all input and output variables for the second profile.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{img/profile2}
+\caption{Output variables for profile 2}
+\label{fig:prof2} 
+\end{figure}
+
+The player of profile 3, 'skeptical beginner', has a daily play time that is considered 'short' with $\mu=70$ and even 'negligible' with $\mu=29$, see figure \ref{fig:p3mpd}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{img/profile3_vMinutesPerDay}
+\caption{\texttt{minutesPerDay} for profile 3}
+\label{fig:p3mpd} 
+\end{figure}
+
+The skeptical attitude of this player towards the game is reflected in his defuzzyfied \texttt{addictionDegree}. As we can see in figure \ref{fig:p3ad}, this players addiction degree is the lowest of all profiles with only $39.024$.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{img/profile3_vAddictionDegree}
+\caption{\texttt{addictionDegree} for profile 3}
+\label{fig:p3ad} 
+\end{figure}
+
+In figure \ref{fig:p3wm} we show the proposed waitingMinutes for this player. With waiting for only about 12 minutes, the player has an incentive to return to the game quickly which will hopefully increase his addiction degree. A higher waiting time might change his mind towards leaving the game.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{img/profile3_vWaitingMinutes}
+\caption{\texttt{waitingMinutes} for profile 3}
+\label{fig:p3wm} 
+\end{figure}
+
+An overview of the profile's variables is shown in figure \ref{fig:prof3}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{img/profile3}
+\caption{Output variables for profile 3}
+\label{fig:prof3} 
+\end{figure}
+
+It can be interesting to observe the relationship between multiple variables on an output variable. In figure \ref{fig:prof1_3d} we can see the relationship between \texttt{currentLevel} and \texttt{currentPoints} for a player of profile 1 (with an \texttt{addictionDegree} of 65.918). In general it can be observed, that as planned the rules define a function that increases the waiting time with increasing level and with increasing points. A speciality that can be observed here is that for low levels, the waiting time increases when reaching 400 points or more but then decreases again around 800 points. This is justified by trying to incentivize players with low levels who are accumulating points towards spending the points and not hoarding them. If this incentive does not work (the points keep increasing while the level stays low), the waiting time decreases again to make sure that the player levels up faster and reaches more interesting parts of the game. The highest waiting time is clearly for players who have both a very high level and a high number of points. It can be seen, that the \texttt{currentLevel} variable has generally a higher impact on the waiting time than the \texttt{currentPoints}.
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{img/profile1_3d}
+\caption{Effect of \texttt{currentLevel} and \texttt{currentPoints} on \texttt{waitingMinutes} for profile 1}
+\label{fig:prof1_3d} 
+\end{figure}
+
+Each rule in the rule blocks can be assigned with a \textit{degree of support} that changes the impact of the rule on the final results. For example, when changing the degree of support for \texttt{R12} ($eager \wedge beginner \Rightarrow medium $) in the \texttt{waitingTime} rule block for profile 1, there is a clearly observable effect on the calculated waiting time. While for a support of 100\% the waitingTime, the calculated waiting time is 33.5 (figure \ref{fig:prof1_3d100}), it decreases to 30.190 when decreasing the support of the rule to 50\% (figure \ref{fig:prof1_3d50}), and even further to only 21.882 minutes when decreasing the support to 10\% (figure \ref{fig:prof1_3d10}). Decreasing the support of this rule removes the support for letting the player wait a 'medium' duration if the player is 'eager' and a 'beginner'. This decreases the waiting time for the player of profile 1 (who fulfills these criteria) when decreasing the rules degree of support.
+ 
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{img/profile1_r12-100}
+\caption{Heatmap of \texttt{waitingMinutes} activation for \texttt{R12}=100\%}
+\label{fig:prof1_3d100} 
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{img/profile1_r12-50}
+\caption{Heatmap of \texttt{waitingMinutes} activation for \texttt{R12}=50\%}
+\label{fig:prof1_3d50} 
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{img/profile1_r12-10}
+\caption{Heatmap of \texttt{waitingMinutes} activation for \texttt{R12}=10\%}
+\label{fig:prof1_3d10} 
+\end{figure}
+
+
+
+
+
